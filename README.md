@@ -1,4 +1,4 @@
-# car-list
+# car-gallery
 
 Simple web app that allows a user to select their car from a directory of registered cars.
 
@@ -22,6 +22,7 @@ The provided web app is built with `Next.js`.
 The following scripts are available:
 
 ```js
+yarn test   // run unit & integration tests with jest
 yarn lint   // run eslint & prettier code checks
 yarn dev    // starts dev server locally, with hot reload
 yarn build  // generate PRD bundle
