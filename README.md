@@ -36,5 +36,6 @@ yarn start  // starts PRD server
 
 ## CI
 
-- `husky` enforces linting when commiting code (runs locally)
+- `husky` enforces linting when committing code (runs locally)
 - Travis CI will pick every _push_ and run test suites
+- `codecov` keeps an eye on the test coverage, and `codeclimate` prevents accumulating technical debt
