@@ -1,0 +1,4 @@
+ignore:
+  - '.next/'
+  - 'apiserver/'
+  - 'node_modules/'

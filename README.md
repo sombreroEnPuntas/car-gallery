@@ -1,5 +1,9 @@
 # car-gallery
 
+[![Build Status](https://travis-ci.com/sombreroEnPuntas/car-gallery.svg?branch=master)](https://travis-ci.com/sombreroEnPuntas/car-gallery)
+[![codecov](https://codecov.io/gh/sombreroEnPuntas/car-gallery/branch/master/graph/badge.svg)](https://codecov.io/gh/sombreroEnPuntas/car-gallery)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ee4b4c3135deb8981c42/maintainability)](https://codeclimate.com/github/sombreroEnPuntas/car-gallery/maintainability)
+
 Simple web app that allows a user to select their car from a directory of registered cars.
 
 **NOTE: Requirements [here](assignment.md)**
@@ -8,6 +12,7 @@ Simple web app that allows a user to select their car from a directory of regist
 
 1.  [Service](#service)
 1.  [Scripts](#scripts)
+1.  [CI](#ci)
 
 ## Service
 
@@ -28,3 +33,8 @@ yarn dev    // starts dev server locally, with hot reload
 yarn build  // generate PRD bundle
 yarn start  // starts PRD server
 ```
+
+## CI
+
+- `husky` enforces linting when commiting code (runs locally)
+- Travis CI will pick every _push_ and run test suites
