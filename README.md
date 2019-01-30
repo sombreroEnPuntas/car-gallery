@@ -22,6 +22,7 @@ The provided web app is built with `Next.js`.
 The following scripts are available:
 
 ```js
+yarn lint   // run eslint & prettier code checks
 yarn dev    // starts dev server locally, with hot reload
 yarn build  // generate PRD bundle
 yarn start  // starts PRD server
