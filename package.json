@@ -12,7 +12,7 @@
     "lint": "eslint --ignore-path .gitignore --fix pages",
     "dev": "next",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "heroku-postbuild": "next build"
   },
   "husky": {
