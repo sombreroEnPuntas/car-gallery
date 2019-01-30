@@ -10,3 +10,8 @@ script:
   - yarn test
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+deploy:
+  provider: heroku
+  app: car-gallery-demo
+  api_key:
+    secure: fNzYKWKj+6U3f/CB0xtkwhLb50ep8vZ+r0/qrvx1F9S+wmEQMTGA0ge0XZfytk5zLF7Fw5EFgNvFvT92WdqGKTPvXVcRqetUHfZjNnNwBXGu+Kmqmw/XT+/yVoALDVyMjwEqzmiJzE3SrLAo+1PY+Hfmrk6Gj8ZeW98iP1EgR/+M1N/s+SsJsFsa6ka06A9ZwC0tlObLeJUW5M5httVtQ6JJh7l+ppnkMmmOOL542k3gHvnnB5OCSqVZpGXy01ypTYG0u6ztrwWgDetM69KwOrVDiE5xE/C78iPtScvXZMLG7OP6sAcW1PHAy2kbvWLiTR570q+hUyhzVj7AKIU/LRW4Cg86WlpmIQ10VVVfvxmOCe4zzrz1y12MEfBu2TEiqSmBsj31s0uwHf7Sf84kopV07O6DLMTeROVPjlIZ8b0OBKLtPpaLTjagU5qqSqm6ORNpSjmCfe2slPwvbpE8ra31lZRZsSd8sL5iNP8NrVD1jOA09Lwxy65UW0F0Y4FTikZMqYE/78fuFaVzi9d33T2Nw83o5jAp08wElJIyPYaZllC9CmtSFXj/pyO48Pjd7r1szLlbDCorvZVx/DU/v7xJVhtgphwufVAow4aG3CEO5acNSjomt6Rk+hIYcl3CMvXL1v8Kdm+SWA76ZomSTjLksIONC9OgU1U4jaTlvuk=

@@ -1,5 +1,7 @@
 # car-gallery
 
+Try it out on [`Heroku`](https://car-gallery-demo.herokuapp.com/)!
+
 [![Build Status](https://travis-ci.com/sombreroEnPuntas/car-gallery.svg?branch=master)](https://travis-ci.com/sombreroEnPuntas/car-gallery)
 [![codecov](https://codecov.io/gh/sombreroEnPuntas/car-gallery/branch/master/graph/badge.svg)](https://codecov.io/gh/sombreroEnPuntas/car-gallery)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ee4b4c3135deb8981c42/maintainability)](https://codeclimate.com/github/sombreroEnPuntas/car-gallery/maintainability)
@@ -13,6 +15,7 @@ Simple web app that allows a user to select their car from a directory of regist
 1.  [Service](#service)
 1.  [Scripts](#scripts)
 1.  [CI](#ci)
+1.  [Web app](#web-app)
 
 ## Service
 
@@ -37,5 +40,9 @@ yarn start  // starts PRD server
 ## CI
 
 - `husky` enforces linting when committing code (runs locally)
-- Travis CI will pick every _push_ and run test suites
+- Travis CI will pick every _push_ and run test suites, and will trigger a `Heroku` deploy for `master` branch.
 - `codecov` keeps an eye on the test coverage, and `codeclimate` prevents accumulating technical debt
+
+## Web app
+
+There's a web app deployed as a [Heroku app](https://car-gallery-demo.herokuapp.com/), mmatching latest master.
