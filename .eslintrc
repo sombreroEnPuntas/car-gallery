@@ -11,6 +11,7 @@
     }
   },
   "env": {
+    "jest/globals": true,
     "node": true
   },
   "rules": {
@@ -21,5 +22,5 @@
     "ecmaVersion": 6,
     "sourceType": "module"
   },
-  "plugins": ["prettier"]
+  "plugins": ["jest", "prettier"]
 }
