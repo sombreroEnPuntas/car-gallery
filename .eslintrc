@@ -11,14 +11,15 @@
     }
   },
   "env": {
-    "jest/globals": true,
     "node": true
   },
-  "rules": {},
+  "rules": {
+    "react/react-in-jsx-scope": 0
+  },
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module"
   },
-  "plugins": ["jest", "prettier"]
+  "plugins": ["prettier"]
 }
