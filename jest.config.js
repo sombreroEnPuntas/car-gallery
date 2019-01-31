@@ -1,10 +1,16 @@
+const ignored = [
+  '<rootDir>/.next/',
+  '<rootDir>/apiserver/',
+  '<rootDir>/coverage/',
+  '<rootDir>/data/constants.js',
+  '<rootDir>/data/mocks.js',
+  '<rootDir>/jest.*',
+  '<rootDir>/node_modules/',
+]
+
 module.exports = {
-  collectCoverageFrom: [
-    '<rootDir>/pages/*.js',
-    '!<rootDir>/.next/',
-    '!<rootDir>/apiserver/',
-    '!<rootDir>/node_modules/',
-  ],
+  collectCoverageFrom: ['<rootDir>/**/*.js'],
+  coveragePathIgnorePatterns: ignored,
   coverageReporters: ['text', 'lcov'],
   coverageThreshold: {
     global: {
@@ -16,9 +22,5 @@ module.exports = {
   },
   setupFiles: ['<rootDir>/jest.setup.js'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
-  testPathIgnorePatterns: [
-    '<rootDir>/.next/',
-    '<rootDir>/apiserver/',
-    '<rootDir>/node_modules/',
-  ],
+  testPathIgnorePatterns: ignored,
 }
