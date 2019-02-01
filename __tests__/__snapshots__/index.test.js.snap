@@ -1,7 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Index matches the snapshot 1`] = `
-<div>
-  Hello world!
-</div>
+exports[`Index when status is error matches snapshot 1`] = `<ErrorMessage />`;
+
+exports[`Index when status is success matches snapshot 1`] = `
+<wrappers__PageWrapper>
+  <p>
+    Available makes:
+  </p>
+  <wrappers__FormLineWrap>
+    <wrappers__Input
+      name="make"
+      onChange={[Function]}
+      status={null}
+      type="text"
+      value=""
+    />
+  </wrappers__FormLineWrap>
+</wrappers__PageWrapper>
 `;

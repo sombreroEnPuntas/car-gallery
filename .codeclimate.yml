@@ -1,4 +1,4 @@
-ignore:
+exclude_patterns:
   - '.next/'
   - '/flow-typed/'
   - 'apiserver/'
