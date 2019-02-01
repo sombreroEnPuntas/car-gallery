@@ -3,11 +3,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 // Components
-import { PageWrapper } from './wrappers'
+import { colors, PageWrapper } from './wrappers'
 
 const ErrorBox = styled.pre`
-  background-color: rgba(206, 17, 38, 0.05);
-  border-radius: 0.25rem;
+  background-color: ${colors.error.background};
+  box-shadow: 4px 0 ${colors.error.shadow}, 0 -4px ${colors.error.shadow},
+    -4px 0 ${colors.error.shadow}, 0 4px ${colors.error.shadow};
   display: block;
   margin: 0.5em 0;
   overflow-x: auto;
@@ -16,7 +17,9 @@ const ErrorBox = styled.pre`
 `
 
 export const ErrorCode = styled.code`
-  color: #c80000;
+  color: ${colors.error.outline};
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
   font-weight: bold;
 `
 type PropsT = {| message: string |}

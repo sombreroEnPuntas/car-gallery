@@ -1,6 +1,255 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Index matches the snapshot 1`] = `
+exports[`DropdownItem matches the snapshot 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "wrappers__DropdownItem-sc-1aeo08b-5",
+        "isStatic": true,
+        "rules": Array [
+          "align-items:center;display:flex;height:1.6rem;justify-content:center;margin:0;overflow:hidden;padding:0;text-align:center;text-decoration:none;text-overflow:ellipsis;text-transform:capitalize;white-space:nowrap;width:100%;",
+        ],
+      },
+      "displayName": "wrappers__DropdownItem",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "wrappers__DropdownItem-sc-1aeo08b-5",
+      "target": "li",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;
+
+exports[`DropdownList matches the snapshot 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "wrappers__DropdownList-sc-1aeo08b-4",
+        "isStatic": true,
+        "rules": Array [
+          "background-color:white;border:solid 2px;border-top:0;box-shadow:4px 0 #212529,0 -4px #212529,-4px 0 #212529,0 4px #212529;list-style:none;margin:0 4px;max-height:9.5rem;overflow-y:hidden;padding:0;position:absolute;top:0;width:calc(100% - 12px);",
+        ],
+      },
+      "displayName": "wrappers__DropdownList",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "wrappers__DropdownList-sc-1aeo08b-4",
+      "target": "ul",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;
+
+exports[`DropdownWrap matches the snapshot 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "wrappers__DropdownWrap-sc-1aeo08b-3",
+        "isStatic": true,
+        "rules": Array [
+          "position:relative;width:100%;z-index:1;",
+        ],
+      },
+      "displayName": "wrappers__DropdownWrap",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "wrappers__DropdownWrap-sc-1aeo08b-3",
+      "target": "div",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;
+
+exports[`FormLineWrap matches the snapshot 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "wrappers__FormLineWrap-sc-1aeo08b-1",
+        "isStatic": true,
+        "rules": Array [
+          "display:flex;width:100%;",
+        ],
+      },
+      "displayName": "wrappers__FormLineWrap",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "wrappers__FormLineWrap-sc-1aeo08b-1",
+      "target": "div",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;
+
+exports[`Input when status is status: {"status": "error"} matches snapshot 1`] = `
+<wrappers__Input
+  status="error"
+>
+  <StyledComponent
+    forwardedComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "wrappers__Input-sc-1aeo08b-2",
+          "isStatic": false,
+          "lastClassName": "bswFBt",
+          "rules": Array [
+            "border:none;box-shadow:0 4px ",
+            [Function],
+            ",0 -4px ",
+            [Function],
+            ",4px 0 ",
+            [Function],
+            ",-4px 0 ",
+            [Function],
+            ";font-family:'Press Start 2P',monospace;margin:4px;outline-color:",
+            [Function],
+            ";padding:0.5rem 1rem;text-transform:capitalize;width:100%;",
+          ],
+        },
+        "displayName": "wrappers__Input",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "wrappers__Input-sc-1aeo08b-2",
+        "target": "input",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    forwardedRef={null}
+    status="error"
+  >
+    <input
+      className="wrappers__Input-sc-1aeo08b-2 bswFBt"
+    />
+  </StyledComponent>
+</wrappers__Input>
+`;
+
+exports[`Input when status is status: {"status": "success"} matches snapshot 1`] = `
+<wrappers__Input
+  status="success"
+>
+  <StyledComponent
+    forwardedComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "wrappers__Input-sc-1aeo08b-2",
+          "isStatic": false,
+          "lastClassName": "dXYKY",
+          "rules": Array [
+            "border:none;box-shadow:0 4px ",
+            [Function],
+            ",0 -4px ",
+            [Function],
+            ",4px 0 ",
+            [Function],
+            ",-4px 0 ",
+            [Function],
+            ";font-family:'Press Start 2P',monospace;margin:4px;outline-color:",
+            [Function],
+            ";padding:0.5rem 1rem;text-transform:capitalize;width:100%;",
+          ],
+        },
+        "displayName": "wrappers__Input",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "wrappers__Input-sc-1aeo08b-2",
+        "target": "input",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    forwardedRef={null}
+    status="success"
+  >
+    <input
+      className="wrappers__Input-sc-1aeo08b-2 dXYKY"
+    />
+  </StyledComponent>
+</wrappers__Input>
+`;
+
+exports[`Input when status is status: {"status": null} matches snapshot 1`] = `
+<wrappers__Input
+  status={null}
+>
+  <StyledComponent
+    forwardedComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "wrappers__Input-sc-1aeo08b-2",
+          "isStatic": false,
+          "lastClassName": "lclgBa",
+          "rules": Array [
+            "border:none;box-shadow:0 4px ",
+            [Function],
+            ",0 -4px ",
+            [Function],
+            ",4px 0 ",
+            [Function],
+            ",-4px 0 ",
+            [Function],
+            ";font-family:'Press Start 2P',monospace;margin:4px;outline-color:",
+            [Function],
+            ";padding:0.5rem 1rem;text-transform:capitalize;width:100%;",
+          ],
+        },
+        "displayName": "wrappers__Input",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "wrappers__Input-sc-1aeo08b-2",
+        "target": "input",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    forwardedRef={null}
+    status={null}
+  >
+    <input
+      className="wrappers__Input-sc-1aeo08b-2 lclgBa"
+    />
+  </StyledComponent>
+</wrappers__Input>
+`;
+
+exports[`PageWrapper matches the snapshot 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {
@@ -24,9 +273,5 @@ exports[`Index matches the snapshot 1`] = `
     }
   }
   forwardedRef={null}
->
-  <div>
-    Hello world!
-  </div>
-</StyledComponent>
+/>
 `;

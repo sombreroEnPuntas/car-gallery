@@ -15,10 +15,14 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
+          <link
+            href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+            rel="stylesheet"
+          />
           <title>Car list demo</title>
           {this.props.styleTags}
         </Head>
-        <body>
+        <body style={{ fontFamily: "'Press Start 2P', monospace" }}>
           <Main />
           <NextScript />
         </body>
