@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
+export const fonts = {
+  fontFamily: "'Press Start 2P', monospace",
+  lineHeight: '1.5em',
+}
+
 export const colors = {
   black: {
     background: 'white',
@@ -18,9 +23,17 @@ export const colors = {
   },
 }
 
+export const breakpoints = {
+  mobile: '768px',
+}
+
 export const PageWrapper = styled.div`
   margin: auto;
-  width: 80vw;
+  width: 96vw;
+
+  @media (min-width: ${breakpoints['mobile']}) {
+    width: 80vw;
+  }
 `
 
 export const FormLineWrap = styled.div`
@@ -34,12 +47,18 @@ export const Input = styled.input`
     0 -4px ${props => colors[props.status || 'black'].shadow},
     4px 0 ${props => colors[props.status || 'black'].shadow},
     -4px 0 ${props => colors[props.status || 'black'].shadow};
-  font-family: 'Press Start 2P', monospace;
+  font-family: ${fonts.fontFamily};
+  line-height: calc(2 * ${fonts.lineHeight});
   margin: 4px;
   outline-color: ${props => colors[props.status || 'black'].outline};
   padding: 0.5rem 1rem;
   text-transform: capitalize;
   width: 100%;
+
+  @media (min-width: ${breakpoints['mobile']}) {
+    font-size: ${fonts.lineHeight};
+    line-height: ${fonts.lineHeight};
+  }
 `
 
 export const DropdownWrap = styled.div`
@@ -52,10 +71,11 @@ export const DropdownList = styled.ul`
   background-color: white;
   border: solid 2px;
   border-top: 0;
-  box-shadow: 4px 0 #212529, 0 -4px #212529, -4px 0 #212529, 0 4px #212529;
+  box-shadow: 4px 0 ${colors['black'].shadow}, 0 -4px ${colors['black'].shadow},
+    -4px 0 ${colors['black'].shadow}, 0 4px ${colors['black'].shadow};
   list-style: none;
   margin: 0 4px;
-  max-height: 9.5rem;
+  max-height: calc(6 * ${fonts.lineHeight});
   overflow-y: hidden;
   padding: 0;
   position: absolute;
@@ -66,7 +86,7 @@ export const DropdownList = styled.ul`
 export const DropdownItem = styled.li`
   align-items: center;
   display: flex;
-  height: 1.6rem;
+  height: ${fonts.lineHeight};
   justify-content: center;
   margin: 0;
   overflow: hidden;

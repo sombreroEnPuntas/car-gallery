@@ -10,7 +10,9 @@ exports[`TestedComponent is  DropdownItem matches snapshot 1`] = `
         "componentId": "wrappers__DropdownItem-sc-1aeo08b-5",
         "isStatic": true,
         "rules": Array [
-          "align-items:center;display:flex;height:1.6rem;justify-content:center;margin:0;overflow:hidden;padding:0;text-align:center;text-decoration:none;text-overflow:ellipsis;text-transform:capitalize;white-space:nowrap;width:100%;",
+          "align-items:center;display:flex;height:",
+          "1.5em",
+          ";justify-content:center;margin:0;overflow:hidden;padding:0;text-align:center;text-decoration:none;text-overflow:ellipsis;text-transform:capitalize;white-space:nowrap;width:100%;",
         ],
       },
       "displayName": "wrappers__DropdownItem",
@@ -37,7 +39,17 @@ exports[`TestedComponent is  DropdownList matches snapshot 1`] = `
         "componentId": "wrappers__DropdownList-sc-1aeo08b-4",
         "isStatic": true,
         "rules": Array [
-          "background-color:white;border:solid 2px;border-top:0;box-shadow:4px 0 #212529,0 -4px #212529,-4px 0 #212529,0 4px #212529;list-style:none;margin:0 4px;max-height:9.5rem;overflow-y:hidden;padding:0;position:absolute;top:0;width:calc(100% - 12px);",
+          "background-color:white;border:solid 2px;border-top:0;box-shadow:4px 0 ",
+          "#212529",
+          ",0 -4px ",
+          "#212529",
+          ",-4px 0 ",
+          "#212529",
+          ",0 4px ",
+          "#212529",
+          ";list-style:none;margin:0 4px;max-height:calc(6 * ",
+          "1.5em",
+          ");overflow-y:hidden;padding:0;position:absolute;top:0;width:calc(100% - 12px);",
         ],
       },
       "displayName": "wrappers__DropdownList",
@@ -118,7 +130,9 @@ exports[`TestedComponent is  PageWrapper matches snapshot 1`] = `
         "componentId": "wrappers__PageWrapper-sc-1aeo08b-0",
         "isStatic": true,
         "rules": Array [
-          "margin:auto;width:80vw;",
+          "margin:auto;width:96vw;@media (min-width:",
+          "768px",
+          "){width:80vw;}",
         ],
       },
       "displayName": "wrappers__PageWrapper",
@@ -140,11 +154,19 @@ exports[`TestedComponent is Input when status is status: {"status": "error"} mat
   border: none;
   box-shadow: 0 4px #e76e55,0 -4px #e76e55,4px 0 #e76e55,-4px 0 #e76e55;
   font-family: 'Press Start 2P',monospace;
+  line-height: calc(2 * 1.5em);
   margin: 4px;
   outline-color: #ce372b;
   padding: 0.5rem 1rem;
   text-transform: capitalize;
   width: 100%;
+}
+
+@media (min-width:768px) {
+  .c0 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
 }
 
 <wrappers__Input
@@ -168,9 +190,19 @@ exports[`TestedComponent is Input when status is status: {"status": "error"} mat
             [Function],
             ",-4px 0 ",
             [Function],
-            ";font-family:'Press Start 2P',monospace;margin:4px;outline-color:",
+            ";font-family:",
+            "'Press Start 2P', monospace",
+            ";line-height:calc(2 * ",
+            "1.5em",
+            ");margin:4px;outline-color:",
             [Function],
-            ";padding:0.5rem 1rem;text-transform:capitalize;width:100%;",
+            ";padding:0.5rem 1rem;text-transform:capitalize;width:100%;@media (min-width:",
+            "768px",
+            "){font-size:",
+            "1.5em",
+            ";line-height:",
+            "1.5em",
+            ";}",
           ],
         },
         "displayName": "wrappers__Input",
@@ -198,11 +230,19 @@ exports[`TestedComponent is Input when status is status: {"status": "success"} m
   border: none;
   box-shadow: 0 4px #92cc41,0 -4px #92cc41,4px 0 #92cc41,-4px 0 #92cc41;
   font-family: 'Press Start 2P',monospace;
+  line-height: calc(2 * 1.5em);
   margin: 4px;
   outline-color: #76c442;
   padding: 0.5rem 1rem;
   text-transform: capitalize;
   width: 100%;
+}
+
+@media (min-width:768px) {
+  .c0 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
 }
 
 <wrappers__Input
@@ -226,9 +266,19 @@ exports[`TestedComponent is Input when status is status: {"status": "success"} m
             [Function],
             ",-4px 0 ",
             [Function],
-            ";font-family:'Press Start 2P',monospace;margin:4px;outline-color:",
+            ";font-family:",
+            "'Press Start 2P', monospace",
+            ";line-height:calc(2 * ",
+            "1.5em",
+            ");margin:4px;outline-color:",
             [Function],
-            ";padding:0.5rem 1rem;text-transform:capitalize;width:100%;",
+            ";padding:0.5rem 1rem;text-transform:capitalize;width:100%;@media (min-width:",
+            "768px",
+            "){font-size:",
+            "1.5em",
+            ";line-height:",
+            "1.5em",
+            ";}",
           ],
         },
         "displayName": "wrappers__Input",
@@ -256,11 +306,19 @@ exports[`TestedComponent is Input when status is status: {"status": null} matche
   border: none;
   box-shadow: 0 4px #212529,0 -4px #212529,4px 0 #212529,-4px 0 #212529;
   font-family: 'Press Start 2P',monospace;
+  line-height: calc(2 * 1.5em);
   margin: 4px;
   outline-color: "#e7e7e7";
   padding: 0.5rem 1rem;
   text-transform: capitalize;
   width: 100%;
+}
+
+@media (min-width:768px) {
+  .c0 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
 }
 
 <wrappers__Input
@@ -284,9 +342,19 @@ exports[`TestedComponent is Input when status is status: {"status": null} matche
             [Function],
             ",-4px 0 ",
             [Function],
-            ";font-family:'Press Start 2P',monospace;margin:4px;outline-color:",
+            ";font-family:",
+            "'Press Start 2P', monospace",
+            ";line-height:calc(2 * ",
+            "1.5em",
+            ");margin:4px;outline-color:",
             [Function],
-            ";padding:0.5rem 1rem;text-transform:capitalize;width:100%;",
+            ";padding:0.5rem 1rem;text-transform:capitalize;width:100%;@media (min-width:",
+            "768px",
+            "){font-size:",
+            "1.5em",
+            ";line-height:",
+            "1.5em",
+            ";}",
           ],
         },
         "displayName": "wrappers__Input",

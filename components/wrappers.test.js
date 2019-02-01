@@ -1,5 +1,6 @@
 // @flow
 import React from 'react'
+// Generate snapshots including the styles
 import 'jest-styled-components'
 
 import { shallow, mount } from 'enzyme'
