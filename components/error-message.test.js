@@ -2,7 +2,11 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import TestedComponent, { ErrorCode } from './error-message'
+// Dependencies
+import { ErrorCode } from './wrappers'
+
+// Tested Unit
+import TestedComponent from './error-message'
 
 const getProps = customProps => ({
   message: 'Hello world!',

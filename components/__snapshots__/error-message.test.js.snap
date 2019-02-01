@@ -8,10 +8,10 @@ exports[`ErrorMessage matches the snapshot 1`] = `
   <p>
     Something went sideways :$
   </p>
-  <error-message__ErrorBox>
-    <error-message__ErrorCode>
+  <wrappers__ErrorBox>
+    <wrappers__ErrorCode>
       Hello world!
-    </error-message__ErrorCode>
-  </error-message__ErrorBox>
+    </wrappers__ErrorCode>
+  </wrappers__ErrorBox>
 </wrappers__PageWrapper>
 `;

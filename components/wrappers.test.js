@@ -1,5 +1,6 @@
 // @flow
 import React from 'react'
+// Generate snapshots including the styles
 import 'jest-styled-components'
 
 import { shallow, mount } from 'enzyme'
@@ -16,6 +17,8 @@ describe('TestedComponent is ', () => {
     ${'DropdownItem'}
     ${'DropdownList'}
     ${'DropdownWrap'}
+    ${'ErrorBox'}
+    ${'ErrorCode'}
     ${'FormLineWrap'}
     ${'PageWrapper'}
   `(`$displayName`, ({ displayName }) => {

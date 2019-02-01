@@ -1,3 +1,4 @@
+import { fonts } from '../components/wrappers'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
@@ -12,6 +13,8 @@ export default class MyDocument extends Document {
   }
 
   render() {
+    const { fontFamily, lineHeight } = fonts
+
     return (
       <html>
         <Head>
@@ -22,7 +25,13 @@ export default class MyDocument extends Document {
           <title>Car list demo</title>
           {this.props.styleTags}
         </Head>
-        <body style={{ fontFamily: "'Press Start 2P', monospace" }}>
+        <body
+          style={{
+            fontFamily,
+            fontSize: ' calc(50px - 2vw)',
+            lineHeight,
+          }}
+        >
           <Main />
           <NextScript />
         </body>
