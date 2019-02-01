@@ -6,6 +6,7 @@ const ignored = [
   '<rootDir>/data/mocks.js',
   '<rootDir>/jest.*',
   '<rootDir>/node_modules/',
+  '<rootDir>/pages/_document.js',
 ]
 
 module.exports = {

@@ -4,3 +4,4 @@ ignore:
   - 'data/constants.js'
   - 'data/mocks.js'
   - 'node_modules/'
+  - 'pages/_document.js'
