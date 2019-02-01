@@ -1,53 +1,34 @@
 // @flow
 import React from 'react'
+import 'jest-styled-components'
+
 import { shallow, mount } from 'enzyme'
 
-import {
-  DropdownItem,
-  DropdownList,
-  DropdownWrap,
-  FormLineWrap,
-  Input,
-  PageWrapper,
-} from './wrappers'
+import * as wrappers from './wrappers'
 
 const getProps = customProps => ({
   ...customProps,
 })
 
-describe('DropdownItem', () => {
-  const wrapper = shallow(<DropdownItem {...getProps()} />)
+describe('TestedComponent is ', () => {
+  describe.each`
+    displayName
+    ${'DropdownItem'}
+    ${'DropdownList'}
+    ${'DropdownWrap'}
+    ${'FormLineWrap'}
+    ${'PageWrapper'}
+  `(`$displayName`, ({ displayName }) => {
+    it(`matches snapshot`, () => {
+      const TestedComponent = wrappers[displayName]
+      const wrapper = shallow(<TestedComponent />)
 
-  it('matches the snapshot', () => {
-    expect(wrapper).toMatchSnapshot()
+      expect(wrapper).toMatchSnapshot()
+    })
   })
 })
 
-describe('DropdownList', () => {
-  const wrapper = shallow(<DropdownList {...getProps()} />)
-
-  it('matches the snapshot', () => {
-    expect(wrapper).toMatchSnapshot()
-  })
-})
-
-describe('DropdownWrap', () => {
-  const wrapper = shallow(<DropdownWrap {...getProps()} />)
-
-  it('matches the snapshot', () => {
-    expect(wrapper).toMatchSnapshot()
-  })
-})
-
-describe('FormLineWrap', () => {
-  const wrapper = shallow(<FormLineWrap {...getProps()} />)
-
-  it('matches the snapshot', () => {
-    expect(wrapper).toMatchSnapshot()
-  })
-})
-
-describe('Input', () => {
+describe('TestedComponent is Input', () => {
   describe('when status is', () => {
     describe.each`
       status
@@ -56,18 +37,11 @@ describe('Input', () => {
       ${{ status: 'error' }}
     `('status: $status', ({ status }) => {
       it(`matches snapshot`, () => {
-        const wrapper = mount(<Input {...getProps(status)} />)
+        const TestedComponent = wrappers.Input
+        const wrapper = mount(<TestedComponent {...getProps(status)} />)
 
         expect(wrapper).toMatchSnapshot()
       })
     })
-  })
-})
-
-describe('PageWrapper', () => {
-  const wrapper = shallow(<PageWrapper {...getProps()} />)
-
-  it('matches the snapshot', () => {
-    expect(wrapper).toMatchSnapshot()
   })
 })

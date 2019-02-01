@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DropdownItem matches the snapshot 1`] = `
+exports[`TestedComponent is  DropdownItem matches snapshot 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {
@@ -27,7 +27,7 @@ exports[`DropdownItem matches the snapshot 1`] = `
 />
 `;
 
-exports[`DropdownList matches the snapshot 1`] = `
+exports[`TestedComponent is  DropdownList matches snapshot 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {
@@ -54,7 +54,7 @@ exports[`DropdownList matches the snapshot 1`] = `
 />
 `;
 
-exports[`DropdownWrap matches the snapshot 1`] = `
+exports[`TestedComponent is  DropdownWrap matches snapshot 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {
@@ -81,7 +81,7 @@ exports[`DropdownWrap matches the snapshot 1`] = `
 />
 `;
 
-exports[`FormLineWrap matches the snapshot 1`] = `
+exports[`TestedComponent is  FormLineWrap matches snapshot 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {
@@ -108,7 +108,45 @@ exports[`FormLineWrap matches the snapshot 1`] = `
 />
 `;
 
-exports[`Input when status is status: {"status": "error"} matches snapshot 1`] = `
+exports[`TestedComponent is  PageWrapper matches snapshot 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "wrappers__PageWrapper-sc-1aeo08b-0",
+        "isStatic": true,
+        "rules": Array [
+          "margin:auto;width:80vw;",
+        ],
+      },
+      "displayName": "wrappers__PageWrapper",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "wrappers__PageWrapper-sc-1aeo08b-0",
+      "target": "div",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;
+
+exports[`TestedComponent is Input when status is status: {"status": "error"} matches snapshot 1`] = `
+.c0 {
+  border: none;
+  box-shadow: 0 4px #e76e55,0 -4px #e76e55,4px 0 #e76e55,-4px 0 #e76e55;
+  font-family: 'Press Start 2P',monospace;
+  margin: 4px;
+  outline-color: #ce372b;
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  width: 100%;
+}
+
 <wrappers__Input
   status="error"
 >
@@ -120,7 +158,7 @@ exports[`Input when status is status: {"status": "error"} matches snapshot 1`] =
         "componentStyle": ComponentStyle {
           "componentId": "wrappers__Input-sc-1aeo08b-2",
           "isStatic": false,
-          "lastClassName": "bswFBt",
+          "lastClassName": "c0",
           "rules": Array [
             "border:none;box-shadow:0 4px ",
             [Function],
@@ -149,13 +187,24 @@ exports[`Input when status is status: {"status": "error"} matches snapshot 1`] =
     status="error"
   >
     <input
-      className="wrappers__Input-sc-1aeo08b-2 bswFBt"
+      className="c0"
     />
   </StyledComponent>
 </wrappers__Input>
 `;
 
-exports[`Input when status is status: {"status": "success"} matches snapshot 1`] = `
+exports[`TestedComponent is Input when status is status: {"status": "success"} matches snapshot 1`] = `
+.c0 {
+  border: none;
+  box-shadow: 0 4px #92cc41,0 -4px #92cc41,4px 0 #92cc41,-4px 0 #92cc41;
+  font-family: 'Press Start 2P',monospace;
+  margin: 4px;
+  outline-color: #76c442;
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  width: 100%;
+}
+
 <wrappers__Input
   status="success"
 >
@@ -167,7 +216,7 @@ exports[`Input when status is status: {"status": "success"} matches snapshot 1`]
         "componentStyle": ComponentStyle {
           "componentId": "wrappers__Input-sc-1aeo08b-2",
           "isStatic": false,
-          "lastClassName": "dXYKY",
+          "lastClassName": "c0",
           "rules": Array [
             "border:none;box-shadow:0 4px ",
             [Function],
@@ -196,13 +245,24 @@ exports[`Input when status is status: {"status": "success"} matches snapshot 1`]
     status="success"
   >
     <input
-      className="wrappers__Input-sc-1aeo08b-2 dXYKY"
+      className="c0"
     />
   </StyledComponent>
 </wrappers__Input>
 `;
 
-exports[`Input when status is status: {"status": null} matches snapshot 1`] = `
+exports[`TestedComponent is Input when status is status: {"status": null} matches snapshot 1`] = `
+.c0 {
+  border: none;
+  box-shadow: 0 4px #212529,0 -4px #212529,4px 0 #212529,-4px 0 #212529;
+  font-family: 'Press Start 2P',monospace;
+  margin: 4px;
+  outline-color: "#e7e7e7";
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  width: 100%;
+}
+
 <wrappers__Input
   status={null}
 >
@@ -214,7 +274,7 @@ exports[`Input when status is status: {"status": null} matches snapshot 1`] = `
         "componentStyle": ComponentStyle {
           "componentId": "wrappers__Input-sc-1aeo08b-2",
           "isStatic": false,
-          "lastClassName": "lclgBa",
+          "lastClassName": "c0",
           "rules": Array [
             "border:none;box-shadow:0 4px ",
             [Function],
@@ -243,35 +303,8 @@ exports[`Input when status is status: {"status": null} matches snapshot 1`] = `
     status={null}
   >
     <input
-      className="wrappers__Input-sc-1aeo08b-2 lclgBa"
+      className="c0"
     />
   </StyledComponent>
 </wrappers__Input>
-`;
-
-exports[`PageWrapper matches the snapshot 1`] = `
-<StyledComponent
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "wrappers__PageWrapper-sc-1aeo08b-0",
-        "isStatic": true,
-        "rules": Array [
-          "margin:auto;width:80vw;",
-        ],
-      },
-      "displayName": "wrappers__PageWrapper",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "wrappers__PageWrapper-sc-1aeo08b-0",
-      "target": "div",
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-/>
 `;
