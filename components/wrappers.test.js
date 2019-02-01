@@ -17,6 +17,8 @@ describe('TestedComponent is ', () => {
     ${'DropdownItem'}
     ${'DropdownList'}
     ${'DropdownWrap'}
+    ${'ErrorBox'}
+    ${'ErrorCode'}
     ${'FormLineWrap'}
     ${'PageWrapper'}
   `(`$displayName`, ({ displayName }) => {

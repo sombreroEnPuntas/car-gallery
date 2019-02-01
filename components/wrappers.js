@@ -27,6 +27,24 @@ export const breakpoints = {
   mobile: '768px',
 }
 
+export const ErrorBox = styled.pre`
+  background-color: ${colors.error.background};
+  box-shadow: 4px 0 ${colors.error.shadow}, 0 -4px ${colors.error.shadow},
+    -4px 0 ${colors.error.shadow}, 0 4px ${colors.error.shadow};
+  display: block;
+  margin: 0.5em 0;
+  overflow-x: auto;
+  padding: 0.5em;
+  white-space: pre-wrap;
+`
+
+export const ErrorCode = styled.code`
+  color: ${colors.error.outline};
+  font-family: ${fonts.fontFamily};
+  font-size: 0.65em;
+  font-weight: bold;
+`
+
 export const PageWrapper = styled.div`
   margin: auto;
   width: 96vw;

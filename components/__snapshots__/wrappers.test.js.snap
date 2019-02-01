@@ -7,7 +7,7 @@ exports[`TestedComponent is  DropdownItem matches snapshot 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "wrappers__DropdownItem-sc-1aeo08b-5",
+        "componentId": "wrappers__DropdownItem-sc-1aeo08b-7",
         "isStatic": true,
         "rules": Array [
           "align-items:center;display:flex;height:",
@@ -18,7 +18,7 @@ exports[`TestedComponent is  DropdownItem matches snapshot 1`] = `
       "displayName": "wrappers__DropdownItem",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "wrappers__DropdownItem-sc-1aeo08b-5",
+      "styledComponentId": "wrappers__DropdownItem-sc-1aeo08b-7",
       "target": "li",
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -36,7 +36,7 @@ exports[`TestedComponent is  DropdownList matches snapshot 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "wrappers__DropdownList-sc-1aeo08b-4",
+        "componentId": "wrappers__DropdownList-sc-1aeo08b-6",
         "isStatic": true,
         "rules": Array [
           "background-color:white;border:solid 2px;border-top:0;box-shadow:4px 0 ",
@@ -55,7 +55,7 @@ exports[`TestedComponent is  DropdownList matches snapshot 1`] = `
       "displayName": "wrappers__DropdownList",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "wrappers__DropdownList-sc-1aeo08b-4",
+      "styledComponentId": "wrappers__DropdownList-sc-1aeo08b-6",
       "target": "ul",
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -73,7 +73,7 @@ exports[`TestedComponent is  DropdownWrap matches snapshot 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "wrappers__DropdownWrap-sc-1aeo08b-3",
+        "componentId": "wrappers__DropdownWrap-sc-1aeo08b-5",
         "isStatic": true,
         "rules": Array [
           "position:relative;width:100%;z-index:1;",
@@ -82,8 +82,76 @@ exports[`TestedComponent is  DropdownWrap matches snapshot 1`] = `
       "displayName": "wrappers__DropdownWrap",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "wrappers__DropdownWrap-sc-1aeo08b-3",
+      "styledComponentId": "wrappers__DropdownWrap-sc-1aeo08b-5",
       "target": "div",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;
+
+exports[`TestedComponent is  ErrorBox matches snapshot 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "wrappers__ErrorBox-sc-1aeo08b-0",
+        "isStatic": true,
+        "rules": Array [
+          "background-color:",
+          "rgba(231, 110, 85, 0.5)",
+          ";box-shadow:4px 0 ",
+          "#e76e55",
+          ",0 -4px ",
+          "#e76e55",
+          ",-4px 0 ",
+          "#e76e55",
+          ",0 4px ",
+          "#e76e55",
+          ";display:block;margin:0.5em 0;overflow-x:auto;padding:0.5em;white-space:pre-wrap;",
+        ],
+      },
+      "displayName": "wrappers__ErrorBox",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "wrappers__ErrorBox-sc-1aeo08b-0",
+      "target": "pre",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;
+
+exports[`TestedComponent is  ErrorCode matches snapshot 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "wrappers__ErrorCode-sc-1aeo08b-1",
+        "isStatic": true,
+        "rules": Array [
+          "color:",
+          "#ce372b",
+          ";font-family:",
+          "'Press Start 2P', monospace",
+          ";font-size:0.65em;font-weight:bold;",
+        ],
+      },
+      "displayName": "wrappers__ErrorCode",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "wrappers__ErrorCode-sc-1aeo08b-1",
+      "target": "code",
       "toString": [Function],
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
@@ -100,7 +168,7 @@ exports[`TestedComponent is  FormLineWrap matches snapshot 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "wrappers__FormLineWrap-sc-1aeo08b-1",
+        "componentId": "wrappers__FormLineWrap-sc-1aeo08b-3",
         "isStatic": true,
         "rules": Array [
           "display:flex;width:100%;",
@@ -109,7 +177,7 @@ exports[`TestedComponent is  FormLineWrap matches snapshot 1`] = `
       "displayName": "wrappers__FormLineWrap",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "wrappers__FormLineWrap-sc-1aeo08b-1",
+      "styledComponentId": "wrappers__FormLineWrap-sc-1aeo08b-3",
       "target": "div",
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -127,7 +195,7 @@ exports[`TestedComponent is  PageWrapper matches snapshot 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "wrappers__PageWrapper-sc-1aeo08b-0",
+        "componentId": "wrappers__PageWrapper-sc-1aeo08b-2",
         "isStatic": true,
         "rules": Array [
           "margin:auto;width:96vw;@media (min-width:",
@@ -138,7 +206,7 @@ exports[`TestedComponent is  PageWrapper matches snapshot 1`] = `
       "displayName": "wrappers__PageWrapper",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "wrappers__PageWrapper-sc-1aeo08b-0",
+      "styledComponentId": "wrappers__PageWrapper-sc-1aeo08b-2",
       "target": "div",
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -178,7 +246,7 @@ exports[`TestedComponent is Input when status is status: {"status": "error"} mat
         "$$typeof": Symbol(react.forward_ref),
         "attrs": Array [],
         "componentStyle": ComponentStyle {
-          "componentId": "wrappers__Input-sc-1aeo08b-2",
+          "componentId": "wrappers__Input-sc-1aeo08b-4",
           "isStatic": false,
           "lastClassName": "c0",
           "rules": Array [
@@ -208,7 +276,7 @@ exports[`TestedComponent is Input when status is status: {"status": "error"} mat
         "displayName": "wrappers__Input",
         "foldedComponentIds": Array [],
         "render": [Function],
-        "styledComponentId": "wrappers__Input-sc-1aeo08b-2",
+        "styledComponentId": "wrappers__Input-sc-1aeo08b-4",
         "target": "input",
         "toString": [Function],
         "warnTooManyClasses": [Function],
@@ -254,7 +322,7 @@ exports[`TestedComponent is Input when status is status: {"status": "success"} m
         "$$typeof": Symbol(react.forward_ref),
         "attrs": Array [],
         "componentStyle": ComponentStyle {
-          "componentId": "wrappers__Input-sc-1aeo08b-2",
+          "componentId": "wrappers__Input-sc-1aeo08b-4",
           "isStatic": false,
           "lastClassName": "c0",
           "rules": Array [
@@ -284,7 +352,7 @@ exports[`TestedComponent is Input when status is status: {"status": "success"} m
         "displayName": "wrappers__Input",
         "foldedComponentIds": Array [],
         "render": [Function],
-        "styledComponentId": "wrappers__Input-sc-1aeo08b-2",
+        "styledComponentId": "wrappers__Input-sc-1aeo08b-4",
         "target": "input",
         "toString": [Function],
         "warnTooManyClasses": [Function],
@@ -330,7 +398,7 @@ exports[`TestedComponent is Input when status is status: {"status": null} matche
         "$$typeof": Symbol(react.forward_ref),
         "attrs": Array [],
         "componentStyle": ComponentStyle {
-          "componentId": "wrappers__Input-sc-1aeo08b-2",
+          "componentId": "wrappers__Input-sc-1aeo08b-4",
           "isStatic": false,
           "lastClassName": "c0",
           "rules": Array [
@@ -360,7 +428,7 @@ exports[`TestedComponent is Input when status is status: {"status": null} matche
         "displayName": "wrappers__Input",
         "foldedComponentIds": Array [],
         "render": [Function],
-        "styledComponentId": "wrappers__Input-sc-1aeo08b-2",
+        "styledComponentId": "wrappers__Input-sc-1aeo08b-4",
         "target": "input",
         "toString": [Function],
         "warnTooManyClasses": [Function],
