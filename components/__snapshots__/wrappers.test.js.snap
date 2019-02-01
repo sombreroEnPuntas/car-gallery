@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index matches the snapshot 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "wrappers__PageWrapper-sc-1aeo08b-0",
+        "isStatic": true,
+        "rules": Array [
+          "margin:auto;width:80vw;",
+        ],
+      },
+      "displayName": "wrappers__PageWrapper",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "wrappers__PageWrapper-sc-1aeo08b-0",
+      "target": "div",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+>
+  <div>
+    Hello world!
+  </div>
+</StyledComponent>
+`;
