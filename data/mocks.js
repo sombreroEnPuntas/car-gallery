@@ -1,6 +1,7 @@
 // @flow
 
-export const makesList = ['Ford', 'Opel']
+export const makesList = ['ford', 'opel']
+export const modelsList = ['explorer', 'fiesta']
 
 // API
 export const errorAPIResponse = {
@@ -10,4 +11,12 @@ export const errorAPIResponse = {
   type: 'invalid-json',
 }
 
+export const badInputAPIResponse = {
+  error: true,
+  message: `Invalid input provided as parameter.`,
+  type: 'bad-input',
+}
+
 export const makesAPIResponse = makesList
+
+export const modelsAPIResponse = modelsList

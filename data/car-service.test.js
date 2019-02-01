@@ -2,7 +2,13 @@
 
 // Data
 import { CAR_SERVICE_URL } from './constants'
-import { errorAPIResponse, makesAPIResponse } from './mocks'
+import {
+  badInputAPIResponse,
+  errorAPIResponse,
+  makesAPIResponse,
+  makesList,
+  modelsAPIResponse,
+} from './mocks'
 
 // Dependencies
 import fetch from 'isomorphic-unfetch'
@@ -24,28 +30,34 @@ describe('carService', () => {
     jest.resetAllMocks() // clean .mock
   })
 
-  describe('getMakes', () => {
+  describe.each`
+    displayName    | APIResponse            | endpoint                             | param        | error
+    ${'getMakes'}  | ${makesAPIResponse}    | ${`${CAR_SERVICE_URL}/makes`}        | ${undefined} | ${false}
+    ${'getMakes'}  | ${errorAPIResponse}    | ${`${CAR_SERVICE_URL}/makes`}        | ${undefined} | ${true}
+    ${'getModels'} | ${modelsAPIResponse}   | ${`${CAR_SERVICE_URL}/models?make=`} | ${'ford'}    | ${false}
+    ${'getModels'} | ${errorAPIResponse}    | ${`${CAR_SERVICE_URL}/models?make=`} | ${'ford'}    | ${true}
+    ${'getModels'} | ${badInputAPIResponse} | ${`${CAR_SERVICE_URL}/models?make=`} | ${'space x'} | ${true}
+  `(`$displayName`, ({ displayName, APIResponse, endpoint, param, error }) => {
     afterEach(() => {
       fetch.mockClear()
     })
 
-    it('calls the right endpoint and returns data', async () => {
-      setFetchMock(makesAPIResponse)
+    it(`calls the right endpoint and returns ${
+      error ? 'error' : 'data'
+    }`, async () => {
+      setFetchMock(APIResponse, error ? errorAPIResponse : null)
 
-      const data = await carService.getMakes()
+      const data = await carService[displayName](
+        param,
+        param ? makesList : undefined
+      )
 
-      expect(fetch).toHaveBeenCalledTimes(1)
-      expect(fetch).toHaveBeenCalledWith(`${CAR_SERVICE_URL}/makes`)
+      expect(data).toEqual(APIResponse)
 
-      expect(data).toEqual(makesAPIResponse)
-    })
-
-    it('handles errors!', async () => {
-      setFetchMock(makesAPIResponse, errorAPIResponse)
-
-      const data = await carService.getMakes()
-
-      expect(data).toEqual(errorAPIResponse)
+      if (APIResponse.type1 == 'bad-input') {
+        expect(fetch).toHaveBeenCalledTimes(1)
+        expect(fetch).toHaveBeenCalledWith(`${endpoint}${param ? param : ''}`)
+      }
     })
   })
 })

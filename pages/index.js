@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 
 // Data
 import { getMakes } from '../data/car-service'
+import type { APIErrorResponseT, GetMakesResponseT } from '../data/car-service'
 
 // Components
 import {
@@ -21,8 +22,9 @@ type HandleClickT = ({ target: { id: string } }) => void
 type HandleUpdateT = string => void
 
 type PropsT = {|
-  error: { error: boolean, message: string },
-  makes: Array<string>,
+  data: GetMakesResponseT,
+  error?: APIErrorResponseT,
+  makes?: Array<string>,
 |}
 
 type StateT = {|
@@ -56,11 +58,8 @@ class Index extends Component<PropsT, StateT> {
   }
 
   componentWillMount() {
-    let makes = []
-    this.props.makes &&
-      this.props.makes.forEach(make => makes.push(make.toLowerCase()))
     this.setState({
-      makes,
+      makes: this.props.makes || [],
       message: this.props.error ? this.props.error.message : '',
     })
   }
@@ -71,10 +70,15 @@ class Index extends Component<PropsT, StateT> {
   handleClick: HandleClickT = ({ target: { id } }) => this.handleUpdate(id)
 
   handleUpdate: HandleUpdateT = value => {
-    const make = value != null ? value.toLowerCase() : this.state.make
+    const make =
+      value != null
+        ? /* normalize input */ value.toLowerCase()
+        : this.state.make
     const options = this.state.makes
       .filter(option => make && option.includes(make))
       .slice(0, 6)
+
+    // validate input
     const isValid = options.length === 1 && make === options[0]
 
     this.setState({
