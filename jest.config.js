@@ -4,6 +4,7 @@ const ignored = [
   '<rootDir>/coverage/',
   '<rootDir>/data/constants.js',
   '<rootDir>/data/mocks.js',
+  '<rootDir>/flow-typed/',
   '<rootDir>/jest.*',
   '<rootDir>/node_modules/',
   '<rootDir>/pages/_document.js',

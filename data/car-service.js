@@ -1,3 +1,5 @@
+// @flow
+
 // NextJS requires a polyfill
 import fetch from 'isomorphic-unfetch'
 import { CAR_SERVICE_URL } from './constants'

@@ -1,5 +1,6 @@
 ignore:
   - '.next/'
+  - '/flow-typed/'
   - 'apiserver/'
   - 'data/constants.js'
   - 'data/mocks.js'

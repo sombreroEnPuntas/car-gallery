@@ -1,3 +1,5 @@
+// @flow
+
 // Data
 import { CAR_SERVICE_URL } from './constants'
 import { errorAPIResponse, makesAPIResponse } from './mocks'

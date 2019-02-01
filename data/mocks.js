@@ -1,3 +1,5 @@
+// @flow
+
 export const makesList = ['Ford', 'Opel']
 
 // API

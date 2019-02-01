@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import styled from 'styled-components'
 
@@ -18,8 +19,9 @@ export const ErrorCode = styled.code`
   color: #c80000;
   font-weight: bold;
 `
+type PropsT = {| message: string |}
 
-const ErrorMessage = ({ message }) => (
+const ErrorMessage = ({ message }: PropsT) => (
   <PageWrapper>
     <h3>{'Ooops...'}</h3>
     <p>{'Something went sideways :$'}</p>
