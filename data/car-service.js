@@ -4,7 +4,7 @@
 import fetch from 'isomorphic-unfetch'
 import { CAR_SERVICE_URL } from './constants'
 
-export type APIErrorResponseT = { error: boolean, message: string }
+export type APIErrorResponseT = { error: string }
 
 export type GetMakesResponseT = Array<string> | APIErrorResponseT
 type GetMakesT = () => Promise<GetMakesResponseT>
@@ -13,7 +13,15 @@ export const getMakes: GetMakesT = async () => {
 
   try {
     const response = await fetch(`${CAR_SERVICE_URL}/makes`)
-    const json = await response.json()
+    const text = await response.text()
+    let json
+
+    // response check
+    try {
+      json = JSON.parse(text)
+    } catch (error) {
+      throw text
+    }
 
     // normalize output
     let makes = []
@@ -21,42 +29,43 @@ export const getMakes: GetMakesT = async () => {
 
     result = makes
   } catch (error) {
-    result = { error: true, ...error }
+    result = error.message
+      ? { error: `${error.message}. ${error.name}` }
+      : { error }
   }
 
   return result
 }
 
 export type GetModelsResponseT = Array<string> | APIErrorResponseT
-type GetModelsT = (
-  make: string,
-  makes: Array<string>
-) => Promise<GetModelsResponseT>
-export const getModels: GetModelsT = async (make, makes) => {
+type GetModelsT = (make: string) => Promise<GetModelsResponseT>
+export const getModels: GetModelsT = async make => {
   let result
 
   try {
     // normalize input
     const param = make.toLowerCase()
 
-    // validate input
-    if (!makes.includes(param)) {
-      throw {
-        message: `Invalid input provided as parameter.`,
-        type: 'bad-input',
-      }
-    }
+    const response = await fetch(`${CAR_SERVICE_URL}/models?make=${param}`)
+    const text = await response.text()
+    let json
 
-    const response = await fetch(`${CAR_SERVICE_URL}/models?make=${make}`)
-    const json = await response.json()
+    // response check
+    try {
+      json = JSON.parse(text)
+    } catch (error) {
+      throw text
+    }
 
     // normalize output
     let models = []
     json.forEach(model => models.push(model.toLowerCase()))
 
-    result = json
+    result = models
   } catch (error) {
-    result = { error: true, ...error }
+    result = error.message
+      ? { error: `${error.message}. ${error.name}` }
+      : { error }
   }
 
   return result
