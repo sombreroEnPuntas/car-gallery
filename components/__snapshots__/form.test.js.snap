@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message matches the snapshot 1`] = `
+<Fragment>
+  <PageWrapper>
+    <div>
+      :)
+    </div>
+  </PageWrapper>
+  <Modal
+    open={false}
+  >
+    <Message
+      message={null}
+    />
+  </Modal>
+</Fragment>
+`;

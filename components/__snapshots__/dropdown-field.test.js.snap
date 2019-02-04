@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropdownField matches snapshot 1`] = `
+<Fragment>
+  <FormLineWrap>
+    <Input
+      autocomplete="dinosaur-name"
+      disabled={false}
+      handleUpdate={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              "r",
+              "dinosaur-name",
+            ],
+            Array [
+              "x",
+              "dinosaur-name",
+            ],
+            Array [
+              "t-rex",
+              "dinosaur-name",
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      name="dinosaur-name"
+      onChange={[Function]}
+      status={null}
+      type="text"
+      value=""
+    />
+  </FormLineWrap>
+</Fragment>
+`;

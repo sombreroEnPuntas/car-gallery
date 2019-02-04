@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message matches the snapshot 1`] = `
+<MessageBox>
+  <h3>
+    Ooops...
+  </h3>
+  <p>
+    Something went sideways :$
+  </p>
+  <ErrorBox>
+    <ErrorCode>
+      Hello world!
+    </ErrorCode>
+  </ErrorBox>
+</MessageBox>
+`;
