@@ -6,3 +6,8 @@ exclude_patterns:
   - 'data/mocks.js'
   - 'node_modules/'
   - 'pages/_document.js'
+
+checks
+  method-lines:
+    config:
+      threshold: 50

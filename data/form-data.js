@@ -6,17 +6,12 @@ import { path, pathOr } from 'ramda'
 // Components
 import type { DropdownFieldT } from '../components/dropdown-filed'
 
-export type FieldHelperT = string => DropdownFieldT
-export type MakeFieldHelperT = (*, *) => FieldHelperT
-export const makeFieldHelper: MakeFieldHelperT = (
+export const makeFieldHelper: (*, *) => string => DropdownFieldT = (
   state,
   handleUpdate
 ) => key => ({
   autocomplete: key,
-  disabled:
-    key === 'model' && !path(['formData', 'make', 'valid'], state)
-      ? true
-      : false,
+  disabled: key === 'model' && !path(['formData', 'make', 'valid'], state),
   handleUpdate: handleUpdate,
   name: key,
   placeholder:
