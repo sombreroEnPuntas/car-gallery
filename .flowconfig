@@ -8,6 +8,7 @@
 
 [options]
   emoji=true
+  suppress_comment= \\(.\\|\n\\)*\\$FlowIgnore
 
   # Default folder where flow will look to resolve import-statements using absolute paths
   module.system.node.resolve_dirname=node_modules
