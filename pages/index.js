@@ -23,10 +23,8 @@ type StateT = {
   isLoading: boolean,
 }
 
-export type AsyncRequestT = (Promise<*>) => Promise<*>
-
 export type HandleUpdateT = (string, string) => void
-export type HandleAsyncFetchResponseT = string => (*) => *
+export type FetchAsyncDataT = () => *
 
 class Index extends Component<PropsT, StateT> {
   state = {
@@ -35,23 +33,23 @@ class Index extends Component<PropsT, StateT> {
     formData: {},
   }
 
-  _asyncRequest: AsyncRequestT = promise => {
-    const wrappedPromise = new Promise(resolve => {
-      promise.then(val => resolve(val))
-    })
-
-    return wrappedPromise
+  async componentDidMount() {
+    try {
+      await this.fetchAsyncData()
+    } catch (error) {
+      // unmount!
+    }
   }
 
-  componentDidMount() {
-    this.fetchAsyncData()
+  async componentDidUpdate() {
+    try {
+      await this.fetchAsyncData()
+    } catch (error) {
+      // unmount!
+    }
   }
 
-  componentDidUpdate() {
-    this.fetchAsyncData()
-  }
-
-  fetchAsyncData: () => void = () => {
+  fetchAsyncData: FetchAsyncDataT = async () => {
     const {
       error,
       formData: { make, model },
@@ -61,24 +59,34 @@ class Index extends Component<PropsT, StateT> {
     if (error) {
       return
     }
-    // should fetch makes?
-    else if (!make || !make.values) {
-      this._asyncRequest(getMakes().then(this.handleAsyncFetchResponse('make')))
-    }
-    // should fetch models?
-    else if (!!make.value && make.valid && (!model || !model.values)) {
-      this._asyncRequest(
-        getModels(make.value).then(this.handleAsyncFetchResponse('model'))
-      )
-    }
-  }
 
-  handleAsyncFetchResponse: HandleAsyncFetchResponseT = key => data => {
+    let key = ''
+    let result
+
+    try {
+      // should fetch makes?
+      if (!make || !make.values) {
+        key = 'make'
+        result = await getMakes()
+      }
+      // should fetch models?
+      else if (!!make.value && make.valid && (!model || !model.values)) {
+        key = 'model'
+        result = await getModels(make.value)
+      }
+      // nothing to do here!
+      else {
+        return
+      }
+    } catch (error) {
+      result = error
+    }
+
     this.setState(
       compose(
         assocPath(['isLoading'], false),
-        assocPath(['error'], data.error || null),
-        assocPath(['formData', key, 'values'], data.error ? null : data)
+        assocPath(['error'], result.error || null),
+        assocPath(['formData', key, 'values'], result.error ? null : result)
       )(this.state)
     )
   }
@@ -100,12 +108,12 @@ class Index extends Component<PropsT, StateT> {
     let isLoading = false
     let cleanValues = ''
     if (name === 'make') {
-      // Needs fetching?
+      // Needs re-fetching?
       if (!valid && path(['formData', 'make', 'valid'], this.state)) {
         cleanValues = 'model'
       }
 
-      // will trigger a loading state?
+      // will it trigger a loading state?
       isLoading = valid
     }
 

@@ -2,7 +2,13 @@
 
 // Data
 import { CAR_SERVICE_URL } from './constants'
-import { errorAPIResponse, internalError, makesList, modelsList } from './mocks'
+import {
+  errorAPIResponse,
+  internalError,
+  makesList,
+  modelsList,
+  setAPIMockImplementation,
+} from './mocks'
 
 // Dependencies
 import fetch from 'isomorphic-unfetch'
@@ -13,14 +19,7 @@ import * as carService from './car-service'
 // Mocks
 jest.mock('isomorphic-unfetch')
 const setFetchMock = (data, error) =>
-  fetch.mockImplementation(() =>
-    error === 'internal'
-      ? Promise.reject(new SyntaxError(data))
-      : Promise.resolve({
-          text: () =>
-            Promise.resolve(error === 'API' ? data : JSON.stringify(data)),
-        })
-  )
+  fetch.mockImplementation(setAPIMockImplementation(data, error))
 
 describe('carService', () => {
   afterAll(() => {

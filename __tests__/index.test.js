@@ -3,7 +3,11 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 // Data
-import { makesList, modelsList } from '../data/mocks'
+import {
+  makesList,
+  modelsList,
+  setCarServiceMockImplementation,
+} from '../data/mocks'
 
 // Dependencies
 import { getMakes, getModels } from '../data/car-service'
@@ -17,14 +21,9 @@ import { assocPath } from 'ramda'
 // Mocks
 jest.mock('../data/car-service')
 const setGetMakesMock = (data, error) =>
-  getMakes.mockImplementation(() =>
-    Promise.resolve(error ? { error: `418 I'm a teapot` } : data)
-  )
+  getMakes.mockImplementation(setCarServiceMockImplementation(data, error))
 const setGetModelsMock = (data, error) =>
-  getModels.mockImplementation(() =>
-    Promise.resolve(error ? { error: `418 I'm a teapot` } : data)
-  )
-const consoleSpy = jest.spyOn(console, 'log')
+  getModels.mockImplementation(setCarServiceMockImplementation(data, error))
 
 const getProps = customProps => ({
   ...customProps,
@@ -32,7 +31,6 @@ const getProps = customProps => ({
 
 describe('Index', () => {
   afterAll(() => {
-    jest.restoreAllMocks() // clean .spyOn mocks
     jest.resetAllMocks() // clean .mock
   })
 
@@ -52,12 +50,35 @@ describe('Index', () => {
     })
   })
 
+  it(`unmounts cleanly`, done => {
+    // noticed there's no await?
+    setGetMakesMock(makesList)
+    setGetModelsMock(modelsList)
+
+    const wrapper = shallow(<TestedComponent {...getProps({})} />)
+    // if not handled...
+    wrapper.unmount()
+    // causes a rejection when fetchAsyncData promise has not resolved yet ;)
+    // Error: ShallowWrapper::setState() can only be called on class components
+
+    process.nextTick(() => {
+      expect(wrapper).toMatchSnapshot()
+
+      getMakes.mockClear()
+      getModels.mockClear()
+
+      done()
+    })
+  })
+
   describe.each`
-    displayName | error   | data                  | formData
-    ${'make'}   | ${null} | ${makesList}          | ${{}}
-    ${'make'}   | ${true} | ${`418 I'm a teapot`} | ${{}}
-    ${'model'}  | ${null} | ${modelsList}         | ${{ make: { value: 'ford', valid: true, values: makesList } }}
-    ${'model'}  | ${true} | ${`418 I'm a teapot`} | ${{ make: { value: 'ford', valid: true, values: makesList } }}
+    displayName | error         | data                   | formData
+    ${'make'}   | ${null}       | ${makesList}           | ${{}}
+    ${'make'}   | ${'API'}      | ${`418 I'm a teapot`}  | ${{}}
+    ${'make'}   | ${'internal'} | ${`Wut?. SyntaxError`} | ${{}}
+    ${'model'}  | ${null}       | ${modelsList}          | ${{ make: { value: 'ford', valid: true, values: makesList } }}
+    ${'model'}  | ${'API'}      | ${`418 I'm a teapot`}  | ${{ make: { value: 'ford', valid: true, values: makesList } }}
+    ${'model'}  | ${'internal'} | ${`Wut?. SyntaxError`} | ${{ make: { value: 'ford', valid: true, values: makesList } }}
   `(`fetch $displayName`, ({ displayName, error, data, formData }) => {
     it(`fetches ${data}`, async done => {
       setGetMakesMock(makesList, error)

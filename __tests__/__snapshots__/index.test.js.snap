@@ -37,3 +37,5 @@ exports[`Index matches snapshot 1`] = `
   />
 </Form>
 `;
+
+exports[`Index unmounts cleanly 1`] = `""`;
