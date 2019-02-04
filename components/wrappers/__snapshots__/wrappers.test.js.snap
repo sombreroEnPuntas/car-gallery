@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TestedComponent is Coin matches snapshot 1`] = `
+exports[`TestedComponent is Coin and matches snapshot 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {
@@ -127,7 +127,7 @@ exports[`TestedComponent is Coin matches snapshot 1`] = `
 />
 `;
 
-exports[`TestedComponent is CoinEarned matches snapshot 1`] = `
+exports[`TestedComponent is CoinEarned and matches snapshot 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {
@@ -279,7 +279,7 @@ exports[`TestedComponent is CoinEarned matches snapshot 1`] = `
 />
 `;
 
-exports[`TestedComponent is DropdownItem matches snapshot 1`] = `
+exports[`TestedComponent is DropdownItem and matches snapshot 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {
@@ -308,7 +308,7 @@ exports[`TestedComponent is DropdownItem matches snapshot 1`] = `
 />
 `;
 
-exports[`TestedComponent is DropdownList matches snapshot 1`] = `
+exports[`TestedComponent is DropdownList and matches snapshot 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {
@@ -345,7 +345,7 @@ exports[`TestedComponent is DropdownList matches snapshot 1`] = `
 />
 `;
 
-exports[`TestedComponent is DropdownWrap matches snapshot 1`] = `
+exports[`TestedComponent is DropdownWrap and matches snapshot 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {
@@ -372,7 +372,7 @@ exports[`TestedComponent is DropdownWrap matches snapshot 1`] = `
 />
 `;
 
-exports[`TestedComponent is ErrorBox matches snapshot 1`] = `
+exports[`TestedComponent is ErrorBox and matches snapshot 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {
@@ -409,7 +409,7 @@ exports[`TestedComponent is ErrorBox matches snapshot 1`] = `
 />
 `;
 
-exports[`TestedComponent is ErrorCode matches snapshot 1`] = `
+exports[`TestedComponent is ErrorCode and matches snapshot 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {
@@ -440,7 +440,7 @@ exports[`TestedComponent is ErrorCode matches snapshot 1`] = `
 />
 `;
 
-exports[`TestedComponent is FormLineWrap matches snapshot 1`] = `
+exports[`TestedComponent is FormLineWrap and matches snapshot 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {
@@ -467,7 +467,7 @@ exports[`TestedComponent is FormLineWrap matches snapshot 1`] = `
 />
 `;
 
-exports[`TestedComponent is Input when status is: {"status": "error"} matches snapshot 1`] = `
+exports[`TestedComponent is Input and matches snapshot 1`] = `
 .c0 {
   border: none;
   box-shadow: 0 4px #e76e55,0 -4px #e76e55,4px 0 #e76e55,-4px 0 #e76e55;
@@ -543,7 +543,7 @@ exports[`TestedComponent is Input when status is: {"status": "error"} matches sn
 </Input>
 `;
 
-exports[`TestedComponent is Input when status is: {"status": "success"} matches snapshot 1`] = `
+exports[`TestedComponent is Input and matches snapshot 2`] = `
 .c0 {
   border: none;
   box-shadow: 0 4px #92cc41,0 -4px #92cc41,4px 0 #92cc41,-4px 0 #92cc41;
@@ -619,7 +619,7 @@ exports[`TestedComponent is Input when status is: {"status": "success"} matches 
 </Input>
 `;
 
-exports[`TestedComponent is Input when status is: {"status": null} matches snapshot 1`] = `
+exports[`TestedComponent is Input and matches snapshot 3`] = `
 .c0 {
   border: none;
   box-shadow: 0 4px #212529,0 -4px #212529,4px 0 #212529,-4px 0 #212529;
@@ -695,7 +695,7 @@ exports[`TestedComponent is Input when status is: {"status": null} matches snaps
 </Input>
 `;
 
-exports[`TestedComponent is MessageBox matches snapshot 1`] = `
+exports[`TestedComponent is MessageBox and matches snapshot 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {
@@ -722,7 +722,7 @@ exports[`TestedComponent is MessageBox matches snapshot 1`] = `
 />
 `;
 
-exports[`TestedComponent is Modal when status is: {"open": false} matches snapshot 1`] = `
+exports[`TestedComponent is Modal and matches snapshot 1`] = `
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -782,7 +782,7 @@ exports[`TestedComponent is Modal when status is: {"open": false} matches snapsh
 </Modal>
 `;
 
-exports[`TestedComponent is Modal when status is: {"open": true} matches snapshot 1`] = `
+exports[`TestedComponent is Modal and matches snapshot 2`] = `
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -845,7 +845,7 @@ exports[`TestedComponent is Modal when status is: {"open": true} matches snapsho
 </Modal>
 `;
 
-exports[`TestedComponent is PageWrapper matches snapshot 1`] = `
+exports[`TestedComponent is PageWrapper and matches snapshot 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {
@@ -874,7 +874,7 @@ exports[`TestedComponent is PageWrapper matches snapshot 1`] = `
 />
 `;
 
-exports[`TestedComponent is ThreeBlinking matches snapshot 1`] = `
+exports[`TestedComponent is ThreeBlinking and matches snapshot 1`] = `
 <StyledComponent
   forwardedComponent={
     Object {

@@ -28,7 +28,9 @@ const wrappers = {
   ErrorBox,
   ErrorCode,
   FormLineWrap,
+  Input,
   MessageBox,
+  Modal,
   PageWrapper,
   ThreeBlinking,
 }
@@ -38,52 +40,31 @@ const getProps = customProps => ({
 })
 
 describe.each`
-  displayName
-  ${'Coin'}
-  ${'CoinEarned'}
-  ${'DropdownItem'}
-  ${'DropdownList'}
-  ${'DropdownWrap'}
-  ${'ErrorBox'}
-  ${'ErrorCode'}
-  ${'FormLineWrap'}
-  ${'MessageBox'}
-  ${'PageWrapper'}
-  ${'ThreeBlinking'}
-`(`TestedComponent is $displayName`, ({ displayName }) => {
+  displayName        | props
+  ${'Coin'}          | ${null}
+  ${'CoinEarned'}    | ${null}
+  ${'DropdownItem'}  | ${null}
+  ${'DropdownList'}  | ${null}
+  ${'DropdownWrap'}  | ${null}
+  ${'ErrorBox'}      | ${null}
+  ${'ErrorCode'}     | ${null}
+  ${'FormLineWrap'}  | ${null}
+  ${'Input'}         | ${{ status: 'error' }}
+  ${'Input'}         | ${{ status: 'success' }}
+  ${'Input'}         | ${{ status: null }}
+  ${'MessageBox'}    | ${null}
+  ${'Modal'}         | ${{ open: false }}
+  ${'Modal'}         | ${{ open: true }}
+  ${'PageWrapper'}   | ${null}
+  ${'ThreeBlinking'} | ${null}
+`(`TestedComponent is $displayName and`, ({ displayName, props }) => {
   it(`matches snapshot`, () => {
     const TestedComponent = wrappers[displayName]
-    const wrapper = shallow(<TestedComponent />)
+    const wrapper =
+      props === null
+        ? shallow(<TestedComponent />)
+        : mount(<TestedComponent {...getProps(props)} />)
 
     expect(wrapper).toMatchSnapshot()
-  })
-})
-
-describe('TestedComponent is Input', () => {
-  describe.each`
-    status
-    ${{ status: null }}
-    ${{ status: 'success' }}
-    ${{ status: 'error' }}
-  `('when status is: $status', ({ status }) => {
-    it(`matches snapshot`, () => {
-      const wrapper = mount(<Input {...getProps(status)} />)
-
-      expect(wrapper).toMatchSnapshot()
-    })
-  })
-})
-
-describe('TestedComponent is Modal', () => {
-  describe.each`
-    status
-    ${{ open: true }}
-    ${{ open: false }}
-  `('when status is: $status', ({ status }) => {
-    it(`matches snapshot`, () => {
-      const wrapper = mount(<Modal {...getProps(status)} />)
-
-      expect(wrapper).toMatchSnapshot()
-    })
   })
 })
