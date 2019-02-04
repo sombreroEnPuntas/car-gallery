@@ -1,0 +1,32 @@
+// @flow
+
+// Utils
+import { path, pathOr } from 'ramda'
+
+// Components
+import type { DropdownFieldT } from '../components/dropdown-filed'
+
+export type FieldHelperT = string => DropdownFieldT
+export type MakeFieldHelperT = (*, *) => FieldHelperT
+export const makeFieldHelper: MakeFieldHelperT = (
+  state,
+  handleUpdate
+) => key => ({
+  autocomplete: key,
+  disabled:
+    key === 'model' && !path(['formData', 'make', 'valid'], state)
+      ? true
+      : false,
+  handleUpdate: handleUpdate,
+  name: key,
+  placeholder:
+    key === 'model' && !path(['formData', 'make', 'valid'], state)
+      ? 'Chose make first!'
+      : undefined,
+  // $FlowIgnore compose returns boolean when evaluated
+  valid: pathOr(false, ['formData', key, 'valid'], state),
+  // $FlowIgnore compose returns string when evaluated
+  value: pathOr('', ['formData', key, 'value'], state),
+  // $FlowIgnore compose returns [string] when evaluated
+  values: pathOr([], ['formData', key, 'values'], state),
+})

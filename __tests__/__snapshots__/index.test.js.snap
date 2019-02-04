@@ -1,20 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Index when status is error matches snapshot 1`] = `<ErrorMessage />`;
-
-exports[`Index when status is success matches snapshot 1`] = `
-<wrappers__PageWrapper>
+exports[`Index matches snapshot 1`] = `
+<Form
+  isLoading={false}
+  message={null}
+>
   <p>
     Available makes:
   </p>
-  <wrappers__FormLineWrap>
-    <wrappers__Input
-      name="make"
-      onChange={[Function]}
-      status={null}
-      type="text"
-      value=""
-    />
-  </wrappers__FormLineWrap>
-</wrappers__PageWrapper>
+  <DropdownField
+    autocomplete="make"
+    disabled={false}
+    handleUpdate={[Function]}
+    name="make"
+    valid={false}
+    value=""
+    values={
+      Array [
+        "ford",
+        "opel",
+      ]
+    }
+  />
+  <p>
+    Available models:
+  </p>
+  <DropdownField
+    autocomplete="model"
+    disabled={true}
+    handleUpdate={[Function]}
+    name="model"
+    placeholder="Chose make first!"
+    valid={false}
+    value=""
+    values={Array []}
+  />
+</Form>
 `;
