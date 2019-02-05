@@ -4,7 +4,6 @@ exports[`DropdownField matches snapshot 1`] = `
 <Fragment>
   <FormLineWrap>
     <Input
-      autocomplete="dinosaur-name"
       disabled={false}
       handleUpdate={
         [MockFunction] {

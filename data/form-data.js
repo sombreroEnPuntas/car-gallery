@@ -10,7 +10,6 @@ export const makeFieldHelper: (*, *) => string => DropdownFieldT = (
   state,
   handleUpdate
 ) => key => ({
-  autocomplete: key,
   disabled: key === 'model' && !path(['formData', 'make', 'valid'], state),
   handleUpdate: handleUpdate,
   name: key,

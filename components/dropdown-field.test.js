@@ -12,7 +12,6 @@ import TestedComponent from './dropdown-filed'
 
 const handleUpdate = jest.fn()
 const getProps = customProps => ({
-  autocomplete: 'dinosaur-name',
   disabled: false,
   handleUpdate,
   name: 'dinosaur-name',
