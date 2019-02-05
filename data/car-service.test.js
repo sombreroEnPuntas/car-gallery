@@ -2,7 +2,13 @@
 
 // Data
 import { CAR_SERVICE_URL } from './constants'
-import { errorAPIResponse, makesAPIResponse } from './mocks'
+import {
+  errorAPIResponse,
+  internalError,
+  makesList,
+  modelsList,
+  setAPIMockImplementation,
+} from './mocks'
 
 // Dependencies
 import fetch from 'isomorphic-unfetch'
@@ -13,39 +19,40 @@ import * as carService from './car-service'
 // Mocks
 jest.mock('isomorphic-unfetch')
 const setFetchMock = (data, error) =>
-  fetch.mockImplementation(() =>
-    error
-      ? Promise.reject(error)
-      : Promise.resolve({ json: () => Promise.resolve(data) })
-  )
+  fetch.mockImplementation(setAPIMockImplementation(data, error))
 
 describe('carService', () => {
   afterAll(() => {
     jest.resetAllMocks() // clean .mock
   })
 
-  describe('getMakes', () => {
-    afterEach(() => {
-      fetch.mockClear()
-    })
+  describe.each`
+    displayName    | data                  | response            | endpoint                             | param        | error
+    ${'getMakes'}  | ${makesList}          | ${makesList}        | ${`${CAR_SERVICE_URL}/makes`}        | ${undefined} | ${null}
+    ${'getMakes'}  | ${`Wut?`}             | ${internalError}    | ${`${CAR_SERVICE_URL}/makes`}        | ${undefined} | ${`internal`}
+    ${'getMakes'}  | ${`418 I'm a teapot`} | ${errorAPIResponse} | ${`${CAR_SERVICE_URL}/makes`}        | ${undefined} | ${`API`}
+    ${'getModels'} | ${modelsList}         | ${modelsList}       | ${`${CAR_SERVICE_URL}/models?make=`} | ${'ford'}    | ${null}
+    ${'getModels'} | ${`Wut?`}             | ${internalError}    | ${`${CAR_SERVICE_URL}/models?make=`} | ${'ford'}    | ${`internal`}
+    ${'getModels'} | ${`418 I'm a teapot`} | ${errorAPIResponse} | ${`${CAR_SERVICE_URL}/models?make=`} | ${'ford'}    | ${`API`}
+  `(
+    `$displayName`,
+    ({ displayName, data, response, endpoint, param, error }) => {
+      afterEach(() => {
+        fetch.mockClear()
+      })
 
-    it('calls the right endpoint and returns data', async () => {
-      setFetchMock(makesAPIResponse)
+      it(`calls the right endpoint and returns ${
+        error ? `${error} error` : 'data'
+      }`, async () => {
+        setFetchMock(data, error)
 
-      const data = await carService.getMakes()
+        const result = await carService[displayName](param)
 
-      expect(fetch).toHaveBeenCalledTimes(1)
-      expect(fetch).toHaveBeenCalledWith(`${CAR_SERVICE_URL}/makes`)
+        expect(result).toEqual(response)
 
-      expect(data).toEqual(makesAPIResponse)
-    })
-
-    it('handles errors!', async () => {
-      setFetchMock(makesAPIResponse, errorAPIResponse)
-
-      const data = await carService.getMakes()
-
-      expect(data).toEqual(errorAPIResponse)
-    })
-  })
+        expect(fetch).toHaveBeenCalledTimes(1)
+        expect(fetch).toHaveBeenCalledWith(`${endpoint}${param ? param : ''}`)
+      })
+    }
+  )
 })

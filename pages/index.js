@@ -3,122 +3,144 @@
 import React, { Component } from 'react'
 
 // Data
-import { getMakes } from '../data/car-service'
+import { getMakes, getModels } from '../data/car-service'
+import { makeFieldHelper } from '../data/form-data'
 
 // Components
-import {
-  DropdownItem,
-  DropdownList,
-  DropdownWrap,
-  FormLineWrap,
-  Input,
-  PageWrapper,
-} from '../components/wrappers'
-import ErrorMessage from '../components/error-message'
+import DropdownField from '../components/dropdown-filed'
+import Form from '../components/form'
 
-type HandleChangeT = (SyntheticInputEvent<HTMLInputElement>) => void
-type HandleClickT = ({ target: { id: string } }) => void
-type HandleUpdateT = string => void
+// Utils
+import { assocPath, compose, dissocPath, path, pathSatisfies } from 'ramda'
 
-type PropsT = {|
-  error: { error: boolean, message: string },
-  makes: Array<string>,
-|}
+type FieldDataT = { valid: boolean, value: string, values: [string] }
 
-type StateT = {|
-  isValid: boolean,
-  make: string,
-  makes: Array<string>,
-  message: string,
-  options: Array<string>,
-|}
+type PropsT = {}
+
+type StateT = {
+  error: ?string,
+  formData: { [string]: FieldDataT },
+  isLoading: boolean,
+}
+
+export type HandleUpdateT = (string, string) => void
+export type FetchAsyncDataT = () => *
 
 class Index extends Component<PropsT, StateT> {
   state = {
-    isValid: false,
-    make: '',
-    makes: [],
-    message: '',
-    options: [],
+    error: null,
+    isLoading: true,
+    formData: {},
   }
 
-  // It is covered, but jest won't be able to find getInitialProps on shallow
-  // rendered component
+  async componentDidMount() {
+    try {
+      await this.fetchAsyncData()
+    } catch (error) {
+      // unmount!
+    }
+  }
 
-  static async getInitialProps() /* istanbul ignore next */ {
-    const data = await getMakes()
+  async componentDidUpdate() {
+    try {
+      await this.fetchAsyncData()
+    } catch (error) {
+      // unmount!
+    }
+  }
 
-    if (data.error) {
-      return { error: data }
+  fetchAsyncData: FetchAsyncDataT = async () => {
+    const {
+      error,
+      formData: { make, model },
+    } = this.state
+
+    // Did it fail already?
+    if (error) {
+      return
     }
 
-    return { makes: data }
+    let key = ''
+    let result
+
+    try {
+      // should fetch makes?
+      if (!make || !make.values) {
+        key = 'make'
+        result = await getMakes()
+      }
+      // should fetch models?
+      else if (!!make.value && make.valid && (!model || !model.values)) {
+        key = 'model'
+        result = await getModels(make.value)
+      }
+      // nothing to do here!
+      else {
+        return
+      }
+    } catch (error) {
+      result = error
+    }
+
+    this.setState(
+      compose(
+        assocPath(['isLoading'], false),
+        assocPath(['error'], result.error || null),
+        assocPath(['formData', key, 'values'], result.error ? null : result)
+      )(this.state)
+    )
   }
 
-  componentWillMount() {
-    let makes = []
-    this.props.makes &&
-      this.props.makes.forEach(make => makes.push(make.toLowerCase()))
-    this.setState({
-      makes,
-      message: this.props.error ? this.props.error.message : '',
-    })
-  }
+  handleUpdate: HandleUpdateT = (newValue, name) => {
+    // normalize input
+    const value =
+      newValue != null
+        ? newValue.toLowerCase()
+        : path(['formData', name, 'value'], this.state) || ''
 
-  handleChange: HandleChangeT = ({ target: { value } }) =>
-    this.handleUpdate(value)
+    // validate input
+    const valid = pathSatisfies(
+      values => values.includes(value),
+      ['formData', name, 'values'],
+      this.state
+    )
 
-  handleClick: HandleClickT = ({ target: { id } }) => this.handleUpdate(id)
+    let isLoading = false
+    let cleanValues = ''
+    if (name === 'make') {
+      // Needs re-fetching?
+      if (!valid && path(['formData', 'make', 'valid'], this.state)) {
+        cleanValues = 'model'
+      }
 
-  handleUpdate: HandleUpdateT = value => {
-    const make = value != null ? value.toLowerCase() : this.state.make
-    const options = this.state.makes
-      .filter(option => make && option.includes(make))
-      .slice(0, 6)
-    const isValid = options.length === 1 && make === options[0]
+      // will it trigger a loading state?
+      isLoading = valid
+    }
 
-    this.setState({
-      make,
-      options,
-      isValid,
-    })
+    this.setState(
+      compose(
+        assocPath(['isLoading'], isLoading),
+        assocPath(['formData', name, 'value'], value),
+        assocPath(['formData', name, 'valid'], valid),
+        dissocPath(['formData', cleanValues, 'values']),
+        dissocPath(['formData', cleanValues, 'valid'])
+        // $FlowIgnore compose returns StateT when evaluated
+      )(this.state)
+    )
   }
 
   render() {
-    if (this.props.error) {
-      return <ErrorMessage message={this.state.message} />
-    }
-
-    const { options, isValid } = this.state
-
-    const showOptions = options.length >= 1 && !isValid
+    const { error, isLoading } = this.state
+    const fieldHelper = makeFieldHelper(this.state, this.handleUpdate)
 
     return (
-      <PageWrapper>
+      <Form isLoading={isLoading} message={error}>
         <p>{'Available makes:'}</p>
-        <FormLineWrap>
-          <Input
-            name="make"
-            onChange={this.handleChange}
-            type="text"
-            value={this.state.make}
-            status={isValid ? 'success' : null}
-          />
-        </FormLineWrap>
-        {showOptions && (
-          <FormLineWrap>
-            <DropdownWrap>
-              <DropdownList>
-                {options.map(make => (
-                  <DropdownItem id={make} key={make} onClick={this.handleClick}>
-                    {make}
-                  </DropdownItem>
-                ))}
-              </DropdownList>
-            </DropdownWrap>
-          </FormLineWrap>
-        )}
-      </PageWrapper>
+        <DropdownField {...fieldHelper('make')} />
+
+        <p>{'Available models:'}</p>
+        <DropdownField {...fieldHelper('model')} />
+      </Form>
     )
   }
 }
