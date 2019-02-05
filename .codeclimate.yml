@@ -1,3 +1,4 @@
+version: '2'
 exclude_patterns:
   - '.next/'
   - '/flow-typed/'
@@ -7,7 +8,7 @@ exclude_patterns:
   - 'node_modules/'
   - 'pages/_document.js'
 
-checks
+checks:
   method-lines:
     config:
       threshold: 50
