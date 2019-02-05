@@ -8,6 +8,7 @@ import {
   makesList,
   modelsList,
   setAPIMockImplementation,
+  vehiclesList,
 } from './mocks'
 
 // Dependencies
@@ -27,16 +28,19 @@ describe('carService', () => {
   })
 
   describe.each`
-    displayName    | data                  | response            | endpoint                             | param        | error
-    ${'getMakes'}  | ${makesList}          | ${makesList}        | ${`${CAR_SERVICE_URL}/makes`}        | ${undefined} | ${null}
-    ${'getMakes'}  | ${`Wut?`}             | ${internalError}    | ${`${CAR_SERVICE_URL}/makes`}        | ${undefined} | ${`internal`}
-    ${'getMakes'}  | ${`418 I'm a teapot`} | ${errorAPIResponse} | ${`${CAR_SERVICE_URL}/makes`}        | ${undefined} | ${`API`}
-    ${'getModels'} | ${modelsList}         | ${modelsList}       | ${`${CAR_SERVICE_URL}/models?make=`} | ${'ford'}    | ${null}
-    ${'getModels'} | ${`Wut?`}             | ${internalError}    | ${`${CAR_SERVICE_URL}/models?make=`} | ${'ford'}    | ${`internal`}
-    ${'getModels'} | ${`418 I'm a teapot`} | ${errorAPIResponse} | ${`${CAR_SERVICE_URL}/models?make=`} | ${'ford'}    | ${`API`}
+    displayName      | data                  | response            | endpoint                                                | make         | model        | error
+    ${'getMakes'}    | ${makesList}          | ${makesList}        | ${`${CAR_SERVICE_URL}/makes`}                           | ${undefined} | ${undefined} | ${null}
+    ${'getMakes'}    | ${`Wut?`}             | ${internalError}    | ${`${CAR_SERVICE_URL}/makes`}                           | ${undefined} | ${undefined} | ${`internal`}
+    ${'getMakes'}    | ${`418 I'm a teapot`} | ${errorAPIResponse} | ${`${CAR_SERVICE_URL}/makes`}                           | ${undefined} | ${undefined} | ${`API`}
+    ${'getModels'}   | ${`Wut?`}             | ${internalError}    | ${`${CAR_SERVICE_URL}/models?make=ford`}                | ${'ford'}    | ${undefined} | ${`internal`}
+    ${'getModels'}   | ${modelsList}         | ${modelsList}       | ${`${CAR_SERVICE_URL}/models?make=ford`}                | ${'ford'}    | ${undefined} | ${null}
+    ${'getModels'}   | ${`418 I'm a teapot`} | ${errorAPIResponse} | ${`${CAR_SERVICE_URL}/models?make=ford`}                | ${'ford'}    | ${undefined} | ${`API`}
+    ${'getVehicles'} | ${vehiclesList}       | ${vehiclesList}     | ${`${CAR_SERVICE_URL}/vehicles?make=ford&model=fiesta`} | ${'ford'}    | ${'fiesta'}  | ${null}
+    ${'getVehicles'} | ${`Wut?`}             | ${internalError}    | ${`${CAR_SERVICE_URL}/vehicles?make=ford&model=fiesta`} | ${'ford'}    | ${'fiesta'}  | ${`internal`}
+    ${'getVehicles'} | ${`418 I'm a teapot`} | ${errorAPIResponse} | ${`${CAR_SERVICE_URL}/vehicles?make=ford&model=fiesta`} | ${'ford'}    | ${'fiesta'}  | ${`API`}
   `(
     `$displayName`,
-    ({ displayName, data, response, endpoint, param, error }) => {
+    ({ displayName, data, response, endpoint, make, model, error }) => {
       afterEach(() => {
         fetch.mockClear()
       })
@@ -46,12 +50,12 @@ describe('carService', () => {
       }`, async () => {
         setFetchMock(data, error)
 
-        const result = await carService[displayName](param)
+        const result = await carService[displayName](make, model)
 
         expect(result).toEqual(response)
 
         expect(fetch).toHaveBeenCalledTimes(1)
-        expect(fetch).toHaveBeenCalledWith(`${endpoint}${param ? param : ''}`)
+        expect(fetch).toHaveBeenCalledWith(endpoint)
       })
     }
   )
