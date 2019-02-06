@@ -13,6 +13,7 @@ const getProps = customProps => ({
   children: <div>{':)'}</div>,
   isLoading: false,
   message: null,
+  retry: false,
   ...customProps,
 })
 

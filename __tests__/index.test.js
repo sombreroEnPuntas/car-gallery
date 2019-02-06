@@ -25,6 +25,8 @@ const setGetMakesMock = (data, error) =>
 const setGetModelsMock = (data, error) =>
   getModels.mockImplementation(setCarServiceMockImplementation(data, error))
 
+jest.useFakeTimers()
+
 const getProps = customProps => ({
   ...customProps,
 })
@@ -50,7 +52,24 @@ describe('Index', () => {
     })
   })
 
-  it(`unmounts cleanly`, done => {
+  it(`sets a retry status after a few seconds`, () => {
+    setGetMakesMock(makesList)
+    setGetModelsMock(modelsList)
+
+    const wrapper = shallow(<TestedComponent {...getProps({})} />)
+
+    wrapper.setState({ error: `418 I'm a teapot` })
+
+    jest.runAllTimers()
+
+    expect(wrapper.state().error).toBe(null)
+    expect(wrapper.state().retries).toBe(1)
+
+    getMakes.mockClear()
+    getModels.mockClear()
+  })
+
+  it(`unmounts cleanly`, () => {
     // noticed there's no await?
     setGetMakesMock(makesList)
     setGetModelsMock(modelsList)
@@ -61,14 +80,10 @@ describe('Index', () => {
     // causes a rejection when fetchAsyncData promise has not resolved yet ;)
     // Error: ShallowWrapper::setState() can only be called on class components
 
-    process.nextTick(() => {
-      expect(wrapper).toMatchSnapshot()
+    expect(wrapper).toMatchSnapshot()
 
-      getMakes.mockClear()
-      getModels.mockClear()
-
-      done()
-    })
+    getMakes.mockClear()
+    getModels.mockClear()
   })
 
   describe.each`
@@ -99,6 +114,7 @@ describe('Index', () => {
             formData
           ),
           isLoading: false,
+          retries: 0,
         })
 
         getMakes.mockClear()
@@ -125,6 +141,7 @@ describe('Index', () => {
           error: `418 I'm a teapot`,
           formData,
           isLoading: true,
+          retries: 0,
         })
 
         expect(getMakes).toHaveBeenCalledTimes(1)
@@ -169,6 +186,7 @@ describe('Index', () => {
               ...(fieldDataModel && { model: fieldDataModel }),
             },
             isLoading: false,
+            retries: 0,
           })
 
           getMakes.mockClear()

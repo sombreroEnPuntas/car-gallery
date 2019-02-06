@@ -13,5 +13,8 @@ exports[`Message matches the snapshot 1`] = `
       Hello world!
     </ErrorCode>
   </ErrorBox>
+  <p>
+    Try again later!
+  </p>
 </MessageBox>
 `;

@@ -4,6 +4,7 @@ exports[`Index matches snapshot 1`] = `
 <Form
   isLoading={false}
   message={null}
+  retry={true}
 >
   <p>
     Available makes:

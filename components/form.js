@@ -7,13 +7,18 @@ import Message from './message'
 import Modal from './wrappers/Modal'
 import PageWrapper from './wrappers/PageWrapper'
 
-type PropsT = {| +children: Node, +isLoading: boolean, +message: ?string |}
+type PropsT = {|
+  +children: Node,
+  +isLoading: boolean,
+  +message: ?string,
+  +retry: boolean,
+|}
 
-const Form = ({ children, isLoading, message }: PropsT) => (
+const Form = ({ children, isLoading, message, retry }: PropsT) => (
   <Fragment>
     <PageWrapper>{children}</PageWrapper>
     <Modal open={isLoading || !!message}>
-      <Message message={message} />
+      <Message message={message} retry={retry} />
     </Modal>
   </Fragment>
 )

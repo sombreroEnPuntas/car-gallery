@@ -13,6 +13,8 @@ import Form from '../components/form'
 // Utils
 import { assocPath, compose, dissocPath, path, pathSatisfies } from 'ramda'
 
+const threeSecondsInMiliSeconds = 1000 * 3
+
 type FieldDataT = { valid: boolean, value: string, values: [string] }
 
 type PropsT = {}
@@ -21,6 +23,7 @@ type StateT = {
   error: ?string,
   formData: { [string]: FieldDataT },
   isLoading: boolean,
+  retries: number,
 }
 
 export type HandleUpdateT = (string, string) => void
@@ -29,8 +32,9 @@ export type FetchAsyncDataT = () => *
 class Index extends Component<PropsT, StateT> {
   state = {
     error: null,
-    isLoading: true,
     formData: {},
+    isLoading: true,
+    retries: 0,
   }
 
   async componentDidMount() {
@@ -53,10 +57,21 @@ class Index extends Component<PropsT, StateT> {
     const {
       error,
       formData: { make, model },
+      retries,
     } = this.state
 
     // Did it fail already?
     if (error) {
+      retries < 3 &&
+        setTimeout(
+          () =>
+            this.setState(prevState => ({
+              error: null,
+              retries: prevState.retries + 1,
+            })),
+          threeSecondsInMiliSeconds
+        )
+
       return
     }
 
@@ -130,11 +145,11 @@ class Index extends Component<PropsT, StateT> {
   }
 
   render() {
-    const { error, isLoading } = this.state
+    const { error, isLoading, retries } = this.state
     const fieldHelper = makeFieldHelper(this.state, this.handleUpdate)
 
     return (
-      <Form isLoading={isLoading} message={error}>
+      <Form isLoading={isLoading} message={error} retry={retries < 3}>
         <p>{'Available makes:'}</p>
         <DropdownField {...fieldHelper('make')} />
 
