@@ -15,7 +15,6 @@ import type { HandleUpdateT } from '../pages'
 type HandleEventT = ({ target: { id: string, value: string } }) => void
 
 export type DropdownFieldT = {|
-  +autocomplete: string,
   +disabled: boolean,
   +handleUpdate: HandleUpdateT,
   +name: string,

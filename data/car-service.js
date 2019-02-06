@@ -5,7 +5,7 @@ import fetch from 'isomorphic-unfetch'
 import { CAR_SERVICE_URL } from './constants'
 
 const fetchFromEndpoint = async (
-  endpoint: 'makes' | 'models',
+  endpoint: 'makes' | 'models' | 'vehicles',
   params: ?string
 ) => {
   let result
@@ -25,8 +25,21 @@ const fetchFromEndpoint = async (
     }
 
     // normalize output
-    let data = []
-    json.forEach(item => data.push(item.toLowerCase()))
+    let data: Array<*> = []
+    json.forEach(item => {
+      if (typeof item === 'string') {
+        data.push(item.toLowerCase())
+      } else {
+        let pairs: VehicleT = {}
+        Object.keys(item).forEach(key => {
+          pairs[key] =
+            typeof item[key] === 'string'
+              ? item[key].toLowerCase()
+              : parseInt(item[key], 10)
+        })
+        data.push(pairs)
+      }
+    })
 
     result = data
   } catch (error) {
@@ -48,3 +61,24 @@ export type GetModelsResponseT = Array<string> | APIErrorResponseT
 type GetModelsT = (make: string) => Promise<GetModelsResponseT>
 export const getModels: GetModelsT = make =>
   fetchFromEndpoint('models', `make=${make.toLowerCase()}`)
+
+export type VehicleT = {
+  make: string,
+  model: string,
+  enginePowerPS: number,
+  enginePowerKW: number,
+  fuelType: string,
+  bodyType: string,
+  engineCapacity: number,
+}
+
+export type GetVehiclesResponseT = Array<VehicleT> | APIErrorResponseT
+type GetVehiclesT = (
+  make: string,
+  model: string
+) => Promise<GetVehiclesResponseT>
+export const getVehicles: GetVehiclesT = (make, model) =>
+  fetchFromEndpoint(
+    'vehicles',
+    `make=${make.toLowerCase()}&model=${model.toLowerCase()}`
+  )
