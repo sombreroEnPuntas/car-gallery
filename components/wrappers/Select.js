@@ -1,8 +1,12 @@
 import styled from 'styled-components'
 import { breakpoints, colors, fonts } from '.'
 
-const Input = styled.input`
+const Select = styled.select`
+  appearance: none;
   background-color: ${({ disabled }) => (disabled ? colors.disabled : 'white')};
+  ::-ms-expand {
+    display: none;
+  }
   border: none;
   box-shadow: 0 4px ${({ status }) => colors[status || 'black'].shadow},
     0 -4px ${({ status }) => colors[status || 'black'].shadow},
@@ -22,4 +26,4 @@ const Input = styled.input`
   }
 `
 
-export default Input
+export default Select

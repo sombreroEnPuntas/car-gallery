@@ -37,6 +37,7 @@ export const breakpoints = {
 
 export const colors = {
   coin: { main: 'gold', border: 'black', accent: 'goldenrod' },
+  disabled: 'rgb(235, 235, 228)',
   black: {
     background: 'white',
     outline: '"#e7e7e7"',

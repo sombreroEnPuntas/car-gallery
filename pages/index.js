@@ -3,25 +3,40 @@
 import React, { Component } from 'react'
 
 // Data
-import { getMakes, getModels } from '../data/car-service'
-import { makeFieldHelper } from '../data/form-data'
+import { getMakes, getModels, getVehicles } from '../data/car-service'
+import {
+  getCarOptionsByKey,
+  getCarsFiltered,
+  getScore,
+  isVehicleKey,
+  makeFieldHelper,
+} from '../data/form-data'
+import type { VehicleT } from '../data/car-service'
 
 // Components
-import DropdownField from '../components/dropdown-filed'
+import DropdownField from '../components/dropdown-field'
+import SelectField from '../components/select-field'
 import Form from '../components/form'
+import FormSection from '../components/wrappers/FormSection'
+import FormButtons from '../components/wrappers/FormButtons'
+import Score from '../components/wrappers/Score'
 
 // Utils
 import { assocPath, compose, dissocPath, path, pathSatisfies } from 'ramda'
 
 const threeSecondsInMiliSeconds = 1000 * 3
 
-type FieldDataT = { valid: boolean, value: string, values: [string] }
+type FieldDataT = {
+  valid: boolean,
+  value: string,
+  values: [string] | [VehicleT],
+}
 
 type PropsT = {}
 
 type StateT = {
   error: ?string,
-  formData: { [string]: FieldDataT },
+  formData: { make: FieldDataT, model: FieldDataT, vehicle: FieldDataT },
   isLoading: boolean,
   retries: number,
 }
@@ -35,6 +50,7 @@ class Index extends Component<PropsT, StateT> {
     formData: {},
     isLoading: true,
     retries: 0,
+    step: 1,
   }
 
   async componentDidMount() {
@@ -56,7 +72,7 @@ class Index extends Component<PropsT, StateT> {
   fetchAsyncData: FetchAsyncDataT = async () => {
     const {
       error,
-      formData: { make, model },
+      formData: { make, model, vehicle },
       retries,
     } = this.state
 
@@ -89,6 +105,17 @@ class Index extends Component<PropsT, StateT> {
         key = 'model'
         result = await getModels(make.value)
       }
+      // should fetch vehicles?
+      else if (
+        !!make.value &&
+        make.valid &&
+        !!model.value &&
+        model.valid &&
+        (!vehicle || !vehicle.values)
+      ) {
+        key = 'vehicle'
+        result = await getVehicles(make.value, model.value)
+      }
       // nothing to do here!
       else {
         return
@@ -107,6 +134,8 @@ class Index extends Component<PropsT, StateT> {
   }
 
   handleUpdate: HandleUpdateT = (newValue, name) => {
+    let nextState
+
     // normalize input
     const value =
       newValue != null
@@ -114,47 +143,112 @@ class Index extends Component<PropsT, StateT> {
         : path(['formData', name, 'value'], this.state) || ''
 
     // validate input
-    const valid = pathSatisfies(
-      values => values.includes(value),
-      ['formData', name, 'values'],
-      this.state
-    )
+    const valid = isVehicleKey(name)
+      ? pathSatisfies(
+          values => getCarOptionsByKey(name)(values).includes(value),
+          ['formData', 'vehicle', 'values'],
+          this.state
+        )
+      : pathSatisfies(
+          values => values.includes(value),
+          ['formData', name, 'values'],
+          this.state
+        )
 
-    let isLoading = false
-    let cleanValues = ''
-    if (name === 'make') {
-      // Needs re-fetching?
-      if (!valid && path(['formData', 'make', 'valid'], this.state)) {
-        cleanValues = 'model'
+    nextState = compose(
+      assocPath(['isLoading'], valid && !isVehicleKey(name)),
+      assocPath(['formData', name, 'value'], value),
+      assocPath(['formData', name, 'valid'], valid)
+      // $FlowIgnore compose returns StateT when evaluated
+    )(this.state)
+
+    // Needs re-fetching?
+    if (!valid) {
+      if (name === 'make') {
+        nextState = compose(
+          dissocPath(['formData', 'model', 'values']),
+          dissocPath(['formData', 'model', 'valid']),
+          dissocPath(['formData', 'vehicle', 'values']),
+          dissocPath(['formData', 'vehicle', 'valid']),
+          dissocPath(['formData', 'bodyType']),
+          dissocPath(['formData', 'fuelType']),
+          dissocPath(['formData', 'engineCapacity']),
+          dissocPath(['formData', 'enginePowerKW'])
+        )(nextState)
       }
-
-      // will it trigger a loading state?
-      isLoading = valid
+      if (name === 'model') {
+        nextState = compose(
+          dissocPath(['formData', 'vehicle', 'values']),
+          dissocPath(['formData', 'vehicle', 'valid']),
+          dissocPath(['formData', 'bodyType']),
+          dissocPath(['formData', 'fuelType']),
+          dissocPath(['formData', 'engineCapacity']),
+          dissocPath(['formData', 'enginePowerKW'])
+        )(nextState)
+      }
     }
 
-    this.setState(
-      compose(
-        assocPath(['isLoading'], isLoading),
-        assocPath(['formData', name, 'value'], value),
-        assocPath(['formData', name, 'valid'], valid),
-        dissocPath(['formData', cleanValues, 'values']),
-        dissocPath(['formData', cleanValues, 'valid'])
-        // $FlowIgnore compose returns StateT when evaluated
-      )(this.state)
-    )
+    this.setState(nextState)
   }
 
+  handleStepClick = direction =>
+    direction === 'next'
+      ? () =>
+          this.setState(prevState => ({
+            step: prevState.step + 1,
+          }))
+      : () =>
+          this.setState(prevState => ({
+            step: prevState.step - 1,
+          }))
+
   render() {
-    const { error, isLoading, retries } = this.state
+    const { error, isLoading, retries, step } = this.state
     const fieldHelper = makeFieldHelper(this.state, this.handleUpdate)
+
+    const carsFound = getCarsFiltered(this.state) || []
+    const score = getScore(this.state)
 
     return (
       <Form isLoading={isLoading} message={error} retry={retries < 3}>
-        <p>{'Available makes:'}</p>
-        <DropdownField {...fieldHelper('make')} />
+        <Score>{`Score: ${('00' + score).slice(-3)}`}</Score>
+        <FormSection active={step === 1} id="part-1">
+          <p>{'Available makes:'}</p>
+          <DropdownField {...fieldHelper('make')} />
 
-        <p>{'Available models:'}</p>
-        <DropdownField {...fieldHelper('model')} />
+          <p>{'Available models:'}</p>
+          <DropdownField {...fieldHelper('model')} />
+        </FormSection>
+
+        <FormSection active={step === 2} id="part-2">
+          <p>{'Available body types:'}</p>
+          <SelectField {...fieldHelper('bodyType')} />
+
+          <p>{'Available fuel types:'}</p>
+          <SelectField {...fieldHelper('fuelType')} />
+        </FormSection>
+
+        <FormSection active={step === 3} id="part-3">
+          <p>{'Available engine capacities:'}</p>
+          <SelectField {...fieldHelper('engineCapacity')} />
+
+          <p>{'Available engine power:'}</p>
+          <SelectField {...fieldHelper('enginePowerKW')} />
+        </FormSection>
+
+        <p>{`Available cars: ${carsFound.length}`}</p>
+        <FormButtons>
+          {step !== 1 ? (
+            <a onClick={this.handleStepClick('back')}>{'< Back'}</a>
+          ) : (
+            <div />
+          )}
+          {step !== 3 ? (
+            <a onClick={this.handleStepClick('next')}>{'Next >'}</a>
+          ) : (
+            <div />
+          )}
+        </FormButtons>
       </Form>
     )
   }

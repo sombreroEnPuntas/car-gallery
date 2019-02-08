@@ -260,7 +260,7 @@ exports[`TestedComponent is CoinEarned and matches snapshot 1`] = `
             ],
             "toString": [Function],
           },
-          " 2s ease-out forwards;",
+          " 2s ease-out forwards;position:absolute;",
         ],
       },
       "displayName": "CoinEarned",
@@ -469,6 +469,7 @@ exports[`TestedComponent is FormLineWrap and matches snapshot 1`] = `
 
 exports[`TestedComponent is Input and matches snapshot 1`] = `
 .c0 {
+  background-color: white;
   border: none;
   box-shadow: 0 4px #e76e55,0 -4px #e76e55,4px 0 #e76e55,-4px 0 #e76e55;
   font-family: 'Press Start 2P',monospace;
@@ -500,7 +501,9 @@ exports[`TestedComponent is Input and matches snapshot 1`] = `
           "isStatic": false,
           "lastClassName": "c0",
           "rules": Array [
-            "border:none;box-shadow:0 4px ",
+            "background-color:",
+            [Function],
+            ";border:none;box-shadow:0 4px ",
             [Function],
             ",0 -4px ",
             [Function],
@@ -545,6 +548,7 @@ exports[`TestedComponent is Input and matches snapshot 1`] = `
 
 exports[`TestedComponent is Input and matches snapshot 2`] = `
 .c0 {
+  background-color: white;
   border: none;
   box-shadow: 0 4px #92cc41,0 -4px #92cc41,4px 0 #92cc41,-4px 0 #92cc41;
   font-family: 'Press Start 2P',monospace;
@@ -576,7 +580,9 @@ exports[`TestedComponent is Input and matches snapshot 2`] = `
           "isStatic": false,
           "lastClassName": "c0",
           "rules": Array [
-            "border:none;box-shadow:0 4px ",
+            "background-color:",
+            [Function],
+            ";border:none;box-shadow:0 4px ",
             [Function],
             ",0 -4px ",
             [Function],
@@ -621,6 +627,7 @@ exports[`TestedComponent is Input and matches snapshot 2`] = `
 
 exports[`TestedComponent is Input and matches snapshot 3`] = `
 .c0 {
+  background-color: white;
   border: none;
   box-shadow: 0 4px #212529,0 -4px #212529,4px 0 #212529,-4px 0 #212529;
   font-family: 'Press Start 2P',monospace;
@@ -652,7 +659,9 @@ exports[`TestedComponent is Input and matches snapshot 3`] = `
           "isStatic": false,
           "lastClassName": "c0",
           "rules": Array [
-            "border:none;box-shadow:0 4px ",
+            "background-color:",
+            [Function],
+            ";border:none;box-shadow:0 4px ",
             [Function],
             ",0 -4px ",
             [Function],

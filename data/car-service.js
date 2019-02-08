@@ -35,7 +35,7 @@ const fetchFromEndpoint = async (
           pairs[key] =
             typeof item[key] === 'string'
               ? item[key].toLowerCase()
-              : parseInt(item[key], 10)
+              : item[key].toString()
         })
         data.push(pairs)
       }
@@ -63,13 +63,13 @@ export const getModels: GetModelsT = make =>
   fetchFromEndpoint('models', `make=${make.toLowerCase()}`)
 
 export type VehicleT = {
+  bodyType: string,
+  engineCapacity: string,
+  enginePowerKW: string,
+  enginePowerPS: string,
+  fuelType: string,
   make: string,
   model: string,
-  enginePowerPS: number,
-  enginePowerKW: number,
-  fuelType: string,
-  bodyType: string,
-  engineCapacity: number,
 }
 
 export type GetVehiclesResponseT = Array<VehicleT> | APIErrorResponseT

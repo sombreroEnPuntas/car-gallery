@@ -8,7 +8,7 @@ import DropdownItem from '../components/wrappers/DropdownItem'
 import Input from '../components/wrappers/Input'
 
 // Tested unit
-import TestedComponent from './dropdown-filed'
+import TestedComponent from './dropdown-field'
 
 const handleUpdate = jest.fn()
 const getProps = customProps => ({
