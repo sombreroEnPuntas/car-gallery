@@ -440,6 +440,33 @@ exports[`TestedComponent is ErrorCode and matches snapshot 1`] = `
 />
 `;
 
+exports[`TestedComponent is FormButtons and matches snapshot 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "FormButtons-sc-1qte9os-0",
+        "isStatic": true,
+        "rules": Array [
+          "display:flex;justify-content:space-between;",
+        ],
+      },
+      "displayName": "FormButtons",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "FormButtons-sc-1qte9os-0",
+      "target": "div",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;
+
 exports[`TestedComponent is FormLineWrap and matches snapshot 1`] = `
 <StyledComponent
   forwardedComponent={
@@ -467,7 +494,173 @@ exports[`TestedComponent is FormLineWrap and matches snapshot 1`] = `
 />
 `;
 
+exports[`TestedComponent is FormSection and matches snapshot 1`] = `
+.c0 {
+  display: none;
+}
+
+<FormSection
+  active={false}
+>
+  <StyledComponent
+    active={false}
+    forwardedComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "FormSection-sc-1etmryy-0",
+          "isStatic": false,
+          "lastClassName": "c0",
+          "rules": Array [
+            "display:",
+            [Function],
+            ";",
+          ],
+        },
+        "displayName": "FormSection",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "FormSection-sc-1etmryy-0",
+        "target": "section",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    forwardedRef={null}
+  >
+    <section
+      className="c0"
+    />
+  </StyledComponent>
+</FormSection>
+`;
+
+exports[`TestedComponent is FormSection and matches snapshot 2`] = `
+.c0 {
+  display: block;
+}
+
+<FormSection
+  active={true}
+>
+  <StyledComponent
+    active={true}
+    forwardedComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "FormSection-sc-1etmryy-0",
+          "isStatic": false,
+          "lastClassName": "c0",
+          "rules": Array [
+            "display:",
+            [Function],
+            ";",
+          ],
+        },
+        "displayName": "FormSection",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "FormSection-sc-1etmryy-0",
+        "target": "section",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    forwardedRef={null}
+  >
+    <section
+      className="c0"
+    />
+  </StyledComponent>
+</FormSection>
+`;
+
 exports[`TestedComponent is Input and matches snapshot 1`] = `
+.c0 {
+  background-color: rgb(235,235,228);
+  border: none;
+  box-shadow: 0 4px #212529,0 -4px #212529,4px 0 #212529,-4px 0 #212529;
+  font-family: 'Press Start 2P',monospace;
+  line-height: calc(2 * 1.5em);
+  margin: 4px;
+  outline-color: "#e7e7e7";
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  width: 100%;
+}
+
+@media (min-width:768px) {
+  .c0 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
+}
+
+<Input
+  disabled={true}
+>
+  <StyledComponent
+    disabled={true}
+    forwardedComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "Input-sc-1wcekai-0",
+          "isStatic": false,
+          "lastClassName": "c0",
+          "rules": Array [
+            "background-color:",
+            [Function],
+            ";border:none;box-shadow:0 4px ",
+            [Function],
+            ",0 -4px ",
+            [Function],
+            ",4px 0 ",
+            [Function],
+            ",-4px 0 ",
+            [Function],
+            ";font-family:",
+            "'Press Start 2P', monospace",
+            ";line-height:calc(2 * ",
+            "1.5em",
+            ");margin:4px;outline-color:",
+            [Function],
+            ";padding:0.5rem 1rem;text-transform:capitalize;width:100%;@media (min-width:",
+            "768px",
+            "){font-size:",
+            "1.5em",
+            ";line-height:",
+            "1.5em",
+            ";}",
+          ],
+        },
+        "displayName": "Input",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "Input-sc-1wcekai-0",
+        "target": "input",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    forwardedRef={null}
+  >
+    <input
+      className="c0"
+      disabled={true}
+    />
+  </StyledComponent>
+</Input>
+`;
+
+exports[`TestedComponent is Input and matches snapshot 2`] = `
 .c0 {
   background-color: white;
   border: none;
@@ -546,7 +739,7 @@ exports[`TestedComponent is Input and matches snapshot 1`] = `
 </Input>
 `;
 
-exports[`TestedComponent is Input and matches snapshot 2`] = `
+exports[`TestedComponent is Input and matches snapshot 3`] = `
 .c0 {
   background-color: white;
   border: none;
@@ -625,7 +818,7 @@ exports[`TestedComponent is Input and matches snapshot 2`] = `
 </Input>
 `;
 
-exports[`TestedComponent is Input and matches snapshot 3`] = `
+exports[`TestedComponent is Input and matches snapshot 4`] = `
 .c0 {
   background-color: white;
   border: none;
@@ -874,6 +1067,407 @@ exports[`TestedComponent is PageWrapper and matches snapshot 1`] = `
       "render": [Function],
       "styledComponentId": "PageWrapper-sc-1xhm07a-0",
       "target": "div",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;
+
+exports[`TestedComponent is Score and matches snapshot 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "Score__FormButtons-sc-1y0zffo-0",
+        "isStatic": true,
+        "rules": Array [
+          "display:flex;justify-content:flex-end;",
+        ],
+      },
+      "displayName": "Score__FormButtons",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "Score__FormButtons-sc-1y0zffo-0",
+      "target": "div",
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;
+
+exports[`TestedComponent is Select and matches snapshot 1`] = `
+.c0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: rgb(235,235,228);
+  border: none;
+  box-shadow: 0 4px #212529,0 -4px #212529,4px 0 #212529,-4px 0 #212529;
+  font-family: 'Press Start 2P',monospace;
+  line-height: calc(2 * 1.5em);
+  margin: 4px;
+  outline-color: "#e7e7e7";
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  width: 100%;
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
+@media (min-width:768px) {
+  .c0 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
+}
+
+<Select
+  disabled={true}
+>
+  <StyledComponent
+    disabled={true}
+    forwardedComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "Select-ljf8xp-0",
+          "isStatic": false,
+          "lastClassName": "c0",
+          "rules": Array [
+            "appearance:none;background-color:",
+            [Function],
+            ";::-ms-expand{display:none;}border:none;box-shadow:0 4px ",
+            [Function],
+            ",0 -4px ",
+            [Function],
+            ",4px 0 ",
+            [Function],
+            ",-4px 0 ",
+            [Function],
+            ";font-family:",
+            "'Press Start 2P', monospace",
+            ";line-height:calc(2 * ",
+            "1.5em",
+            ");margin:4px;outline-color:",
+            [Function],
+            ";padding:0.5rem 1rem;text-transform:capitalize;width:100%;@media (min-width:",
+            "768px",
+            "){font-size:",
+            "1.5em",
+            ";line-height:",
+            "1.5em",
+            ";}",
+          ],
+        },
+        "displayName": "Select",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "Select-ljf8xp-0",
+        "target": "select",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    forwardedRef={null}
+  >
+    <select
+      className="c0"
+      disabled={true}
+    />
+  </StyledComponent>
+</Select>
+`;
+
+exports[`TestedComponent is Select and matches snapshot 2`] = `
+.c0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: white;
+  border: none;
+  box-shadow: 0 4px #e76e55,0 -4px #e76e55,4px 0 #e76e55,-4px 0 #e76e55;
+  font-family: 'Press Start 2P',monospace;
+  line-height: calc(2 * 1.5em);
+  margin: 4px;
+  outline-color: #ce372b;
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  width: 100%;
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
+@media (min-width:768px) {
+  .c0 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
+}
+
+<Select
+  status="error"
+>
+  <StyledComponent
+    forwardedComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "Select-ljf8xp-0",
+          "isStatic": false,
+          "lastClassName": "c0",
+          "rules": Array [
+            "appearance:none;background-color:",
+            [Function],
+            ";::-ms-expand{display:none;}border:none;box-shadow:0 4px ",
+            [Function],
+            ",0 -4px ",
+            [Function],
+            ",4px 0 ",
+            [Function],
+            ",-4px 0 ",
+            [Function],
+            ";font-family:",
+            "'Press Start 2P', monospace",
+            ";line-height:calc(2 * ",
+            "1.5em",
+            ");margin:4px;outline-color:",
+            [Function],
+            ";padding:0.5rem 1rem;text-transform:capitalize;width:100%;@media (min-width:",
+            "768px",
+            "){font-size:",
+            "1.5em",
+            ";line-height:",
+            "1.5em",
+            ";}",
+          ],
+        },
+        "displayName": "Select",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "Select-ljf8xp-0",
+        "target": "select",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    forwardedRef={null}
+    status="error"
+  >
+    <select
+      className="c0"
+    />
+  </StyledComponent>
+</Select>
+`;
+
+exports[`TestedComponent is Select and matches snapshot 3`] = `
+.c0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: white;
+  border: none;
+  box-shadow: 0 4px #92cc41,0 -4px #92cc41,4px 0 #92cc41,-4px 0 #92cc41;
+  font-family: 'Press Start 2P',monospace;
+  line-height: calc(2 * 1.5em);
+  margin: 4px;
+  outline-color: #76c442;
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  width: 100%;
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
+@media (min-width:768px) {
+  .c0 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
+}
+
+<Select
+  status="success"
+>
+  <StyledComponent
+    forwardedComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "Select-ljf8xp-0",
+          "isStatic": false,
+          "lastClassName": "c0",
+          "rules": Array [
+            "appearance:none;background-color:",
+            [Function],
+            ";::-ms-expand{display:none;}border:none;box-shadow:0 4px ",
+            [Function],
+            ",0 -4px ",
+            [Function],
+            ",4px 0 ",
+            [Function],
+            ",-4px 0 ",
+            [Function],
+            ";font-family:",
+            "'Press Start 2P', monospace",
+            ";line-height:calc(2 * ",
+            "1.5em",
+            ");margin:4px;outline-color:",
+            [Function],
+            ";padding:0.5rem 1rem;text-transform:capitalize;width:100%;@media (min-width:",
+            "768px",
+            "){font-size:",
+            "1.5em",
+            ";line-height:",
+            "1.5em",
+            ";}",
+          ],
+        },
+        "displayName": "Select",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "Select-ljf8xp-0",
+        "target": "select",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    forwardedRef={null}
+    status="success"
+  >
+    <select
+      className="c0"
+    />
+  </StyledComponent>
+</Select>
+`;
+
+exports[`TestedComponent is Select and matches snapshot 4`] = `
+.c0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: white;
+  border: none;
+  box-shadow: 0 4px #212529,0 -4px #212529,4px 0 #212529,-4px 0 #212529;
+  font-family: 'Press Start 2P',monospace;
+  line-height: calc(2 * 1.5em);
+  margin: 4px;
+  outline-color: "#e7e7e7";
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  width: 100%;
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
+@media (min-width:768px) {
+  .c0 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
+}
+
+<Select
+  status={null}
+>
+  <StyledComponent
+    forwardedComponent={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "Select-ljf8xp-0",
+          "isStatic": false,
+          "lastClassName": "c0",
+          "rules": Array [
+            "appearance:none;background-color:",
+            [Function],
+            ";::-ms-expand{display:none;}border:none;box-shadow:0 4px ",
+            [Function],
+            ",0 -4px ",
+            [Function],
+            ",4px 0 ",
+            [Function],
+            ",-4px 0 ",
+            [Function],
+            ";font-family:",
+            "'Press Start 2P', monospace",
+            ";line-height:calc(2 * ",
+            "1.5em",
+            ");margin:4px;outline-color:",
+            [Function],
+            ";padding:0.5rem 1rem;text-transform:capitalize;width:100%;@media (min-width:",
+            "768px",
+            "){font-size:",
+            "1.5em",
+            ";line-height:",
+            "1.5em",
+            ";}",
+          ],
+        },
+        "displayName": "Select",
+        "foldedComponentIds": Array [],
+        "render": [Function],
+        "styledComponentId": "Select-ljf8xp-0",
+        "target": "select",
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    forwardedRef={null}
+    status={null}
+  >
+    <select
+      className="c0"
+    />
+  </StyledComponent>
+</Select>
+`;
+
+exports[`TestedComponent is SelectItem and matches snapshot 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "SelectItem-sc-9uy8oq-0",
+        "isStatic": true,
+        "rules": Array [
+          "align-items:center;display:flex;height:",
+          "1.5em",
+          ";justify-content:center;margin:0;overflow:hidden;padding:0;text-align:center;text-decoration:none;text-overflow:ellipsis;text-transform:capitalize;white-space:nowrap;width:100%;",
+        ],
+      },
+      "displayName": "SelectItem",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "SelectItem-sc-9uy8oq-0",
+      "target": "option",
       "toString": [Function],
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
