@@ -13,7 +13,7 @@ import SelectItem from './wrappers/SelectItem'
 
 import type { HandleUpdateT } from '../pages'
 
-type HandleEventT = ({ target: { id: string, value: string } }) => void
+type HandleEventT = ({ target: { value: string } }) => void
 
 export type SelectFieldT = {|
   +disabled: boolean,
@@ -26,8 +26,8 @@ export type SelectFieldT = {|
 |}
 
 class SelectField extends Component<SelectFieldT> {
-  handleEvent: HandleEventT = ({ target: { value, id } }) =>
-    this.props.handleUpdate(value || id, this.props.name)
+  handleEvent: HandleEventT = ({ target: { value } }) =>
+    this.props.handleUpdate(value, this.props.name)
 
   render() {
     const { name, valid, values, placeholder, ...inputProps } = this.props
