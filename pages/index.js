@@ -206,7 +206,7 @@ class Index extends Component<PropsT, StateT> {
     const { error, isLoading, retries, step } = this.state
     const fieldHelper = makeFieldHelper(this.state, this.handleUpdate)
 
-    const carsFound = getCarsFiltered(this.state) || []
+    const carsFound = getCarsFiltered(this.state)
     const score = getScore(this.state)
 
     return (
@@ -239,12 +239,16 @@ class Index extends Component<PropsT, StateT> {
         <p>{`Available cars: ${carsFound.length}`}</p>
         <FormButtons>
           {step !== 1 ? (
-            <a onClick={this.handleStepClick('back')}>{'< Back'}</a>
+            <a data-test-id="back" onClick={this.handleStepClick('back')}>
+              {'< Back'}
+            </a>
           ) : (
             <div />
           )}
           {step !== 3 ? (
-            <a onClick={this.handleStepClick('next')}>{'Next >'}</a>
+            <a data-test-id="next" onClick={this.handleStepClick('next')}>
+              {'Next >'}
+            </a>
           ) : (
             <div />
           )}

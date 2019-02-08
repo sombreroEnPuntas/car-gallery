@@ -105,6 +105,7 @@ exports[`Index matches snapshot 1`] = `
   <FormButtons>
     <div />
     <a
+      data-test-id="next"
       onClick={[Function]}
     >
       Next &gt;
