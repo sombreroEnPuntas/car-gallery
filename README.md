@@ -45,4 +45,4 @@ yarn start  // starts PRD server
 
 ## Web app
 
-There's a web app deployed as a [Heroku app](https://car-gallery-demo.herokuapp.com/), mmatching latest master.
+There's a web app deployed as a [Heroku app](https://car-gallery-demo.herokuapp.com/), matching latest master.
