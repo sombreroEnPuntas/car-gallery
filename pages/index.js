@@ -39,6 +39,7 @@ type StateT = {
   formData: { make: FieldDataT, model: FieldDataT, vehicle: FieldDataT },
   isLoading: boolean,
   retries: number,
+  step: number,
 }
 
 export type HandleUpdateT = (string, string) => void
@@ -165,6 +166,7 @@ class Index extends Component<PropsT, StateT> {
     // Needs re-fetching?
     if (!valid) {
       if (name === 'make') {
+        // $FlowIgnore compose takes any mnumber of args
         nextState = compose(
           dissocPath(['formData', 'model', 'values']),
           dissocPath(['formData', 'model', 'valid']),
@@ -191,7 +193,7 @@ class Index extends Component<PropsT, StateT> {
     this.setState(nextState)
   }
 
-  handleStepClick = direction =>
+  handleStepClick = (direction: 'back' | 'next') =>
     direction === 'next'
       ? () =>
           this.setState(prevState => ({
@@ -219,7 +221,6 @@ class Index extends Component<PropsT, StateT> {
           <p>{'Available models:'}</p>
           <DropdownField {...fieldHelper('model')} />
         </FormSection>
-
         <FormSection active={step === 2} id="part-2">
           <p>{'Available body types:'}</p>
           <SelectField {...fieldHelper('bodyType')} />
@@ -227,7 +228,6 @@ class Index extends Component<PropsT, StateT> {
           <p>{'Available fuel types:'}</p>
           <SelectField {...fieldHelper('fuelType')} />
         </FormSection>
-
         <FormSection active={step === 3} id="part-3">
           <p>{'Available engine capacities:'}</p>
           <SelectField {...fieldHelper('engineCapacity')} />
@@ -236,6 +236,7 @@ class Index extends Component<PropsT, StateT> {
           <SelectField {...fieldHelper('enginePowerKW')} />
         </FormSection>
 
+        {/* // $FlowIgnore ramda.filter returns array when evaluated */}
         <p>{`Available cars: ${carsFound.length}`}</p>
         <FormButtons>
           {step !== 1 ? (

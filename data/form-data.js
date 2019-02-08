@@ -39,17 +39,18 @@ export const makeFieldHelper: (*, *) => string => DropdownFieldT = (
   ...getFieldPlaceholder(key, state),
   handleUpdate: handleUpdate,
   name: key,
-  // $FlowIgnore compose returns boolean when evaluated
+  // $FlowIgnore pathOr returns string when evaluated
   valid: pathOr(false, ['formData', key, 'valid'], state),
-  // $FlowIgnore compose returns string when evaluated
+  // $FlowIgnore pathOr returns string when evaluated
   value: pathOr('', ['formData', key, 'value'], state),
-  // $FlowIgnore compose returns [string] when evaluated
   values: isVehicleKey(key)
-    ? getCarsFiltered(state)
-    : pathOr([], ['formData', key, 'values'], state),
+    ? // $FlowIgnore compose returns array when evaluated
+      getCarsFiltered(state)
+    : // $FlowIgnore pathOr returns string when evaluated
+      pathOr([], ['formData', key, 'values'], state),
 })
 
-export const getScore = state =>
+export const getScore = (state: *) =>
   (path(['formData', 'make', 'valid'], state) ? 75 : 0) +
   (path(['formData', 'model', 'valid'], state) ? 75 : 0) +
   (path(['formData', 'bodyType', 'valid'], state) ? 25 : 0) +
@@ -57,15 +58,8 @@ export const getScore = state =>
   (path(['formData', 'enginePowerKW', 'valid'], state) ? 25 : 0) +
   (path(['formData', 'fuelType', 'valid'], state) ? 25 : 0)
 
-type CarFiltersT =
-  | 'bodyType'
-  | 'engineCapacity'
-  | 'enginePowerKW'
-  | 'enginePowerPS'
-  | 'fuelType'
-
-export const getCarOptionsByKey: CarFiltersT => (
-  Array<VehicleT>
+export const getCarOptionsByKey: string => (
+  Array<string>
 ) => Array<string> = key => data => {
   let options = []
   data.forEach(car => !options.includes(car[key]) && options.push(car[key]))
@@ -75,36 +69,47 @@ export const getCarOptionsByKey: CarFiltersT => (
 const getFilter = (key, value) =>
   !!value && value !== '' ? propEq(key, value) : always()
 
-export const getCarsFiltered = state =>
+export const getCarsFiltered = (state: *) =>
   compose(
+    // $FlowIgnore filter returns array when evaluated
     filter(
       getFilter(
         'bodyType',
+        // $FlowIgnore pathOr returns string when evaluated
         pathOr('', ['formData', 'bodyType', 'value'], state)
       )
     ),
+    // $FlowIgnore filter returns array when evaluated
     filter(
       getFilter(
         'engineCapacity',
+        // $FlowIgnore pathOr returns string when evaluated
         pathOr('', ['formData', 'engineCapacity', 'value'], state)
       )
     ),
+    // $FlowIgnore filter returns array when evaluated
     filter(
       getFilter(
         'enginePowerKW',
+        // $FlowIgnore pathOr returns string when evaluated
         pathOr('', ['formData', 'enginePowerKW', 'value'], state)
       )
     ),
+    // $FlowIgnore filter returns array when evaluated
     filter(
       getFilter(
         'enginePowerPS',
+        // $FlowIgnore pathOr returns string when evaluated
         pathOr('', ['formData', 'enginePowerPS', 'value'], state)
       )
     ),
+    // $FlowIgnore filter returns array when evaluated
     filter(
       getFilter(
         'fuelType',
+        // $FlowIgnore pathOr returns string when evaluated
         pathOr('', ['formData', 'fuelType', 'value'], state)
       )
     )
+    // $FlowIgnore filter returns array when evaluated
   )(pathOr([], ['formData', 'vehicle', 'values'], state))
