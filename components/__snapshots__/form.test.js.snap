@@ -12,6 +12,7 @@ exports[`Message matches the snapshot 1`] = `
   >
     <Message
       message={null}
+      retry={false}
     />
   </Modal>
 </Fragment>

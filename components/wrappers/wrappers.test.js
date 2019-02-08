@@ -12,11 +12,16 @@ import DropdownList from './DropdownList'
 import DropdownWrap from './DropdownWrap'
 import ErrorBox from './ErrorBox'
 import ErrorCode from './ErrorCode'
+import FormButtons from './FormButtons'
 import FormLineWrap from './FormLineWrap'
+import FormSection from './FormSection'
 import Input from './Input'
 import MessageBox from './MessageBox'
 import Modal from './Modal'
 import PageWrapper from './PageWrapper'
+import Score from './Score'
+import Select from './Select'
+import SelectItem from './SelectItem'
 import ThreeBlinking from './ThreeBlinking'
 
 const wrappers = {
@@ -27,11 +32,16 @@ const wrappers = {
   DropdownWrap,
   ErrorBox,
   ErrorCode,
+  FormButtons,
   FormLineWrap,
+  FormSection,
   Input,
   MessageBox,
   Modal,
   PageWrapper,
+  Score,
+  Select,
+  SelectItem,
   ThreeBlinking,
 }
 
@@ -48,7 +58,11 @@ describe.each`
   ${'DropdownWrap'}  | ${null}
   ${'ErrorBox'}      | ${null}
   ${'ErrorCode'}     | ${null}
+  ${'FormButtons'}   | ${null}
   ${'FormLineWrap'}  | ${null}
+  ${'FormSection'}   | ${{ active: false }}
+  ${'FormSection'}   | ${{ active: true }}
+  ${'Input'}         | ${{ disabled: true }}
   ${'Input'}         | ${{ status: 'error' }}
   ${'Input'}         | ${{ status: 'success' }}
   ${'Input'}         | ${{ status: null }}
@@ -56,6 +70,12 @@ describe.each`
   ${'Modal'}         | ${{ open: false }}
   ${'Modal'}         | ${{ open: true }}
   ${'PageWrapper'}   | ${null}
+  ${'Score'}         | ${null}
+  ${'Select'}        | ${{ disabled: true }}
+  ${'Select'}        | ${{ status: 'error' }}
+  ${'Select'}        | ${{ status: 'success' }}
+  ${'Select'}        | ${{ status: null }}
+  ${'SelectItem'}    | ${null}
   ${'ThreeBlinking'} | ${null}
 `(`TestedComponent is $displayName and`, ({ displayName, props }) => {
   it(`matches snapshot`, () => {

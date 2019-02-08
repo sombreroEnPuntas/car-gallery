@@ -4,11 +4,10 @@ import { shallow } from 'enzyme'
 
 // Dependencies
 import CoinEarned from '../components/wrappers/CoinEarned'
-import DropdownItem from '../components/wrappers/DropdownItem'
-import Input from '../components/wrappers/Input'
+import Select from '../components/wrappers/Select'
 
 // Tested unit
-import TestedComponent from './dropdown-field'
+import TestedComponent from './select-field'
 
 const handleUpdate = jest.fn()
 const getProps = customProps => ({
@@ -23,29 +22,18 @@ const getProps = customProps => ({
 
 describe('DropdownField', () => {
   describe.each`
-    status              | Component       | event                          | options | value
-    ${'char typed'}     | ${Input}        | ${{ target: { value: 'r' } }}  | ${2}    | ${'r'}
-    ${'char typed'}     | ${Input}        | ${{ target: { value: 'x' } }}  | ${1}    | ${'x'}
-    ${'option clicked'} | ${DropdownItem} | ${{ target: { id: 't-rex' } }} | ${1}    | ${'t-rex'}
-  `('$status', ({ Component, event, options, value }) => {
+    status          | Component | event                         | value
+    ${'char typed'} | ${Select} | ${{ target: { value: 'r' } }} | ${'r'}
+    ${'char typed'} | ${Select} | ${{ target: { value: 'x' } }} | ${'x'}
+  `('$status', ({ Component, event, value }) => {
     const wrapper = shallow(<TestedComponent {...getProps({ value })} />)
 
     it(`handles the event properly`, () => {
       wrapper
         .find(Component)
-        .simulate(Component === Input ? 'change' : 'click', event)
+        .simulate(Component === Select ? 'change' : 'click', event)
 
       expect(handleUpdate).toHaveBeenCalledWith(value, getProps().name)
-    })
-
-    it('filters the list adnd shows options', () => {
-      wrapper
-        .find(DropdownItem)
-        .forEach((item, index) =>
-          expect(item.text()).toBe(getProps().values[index])
-        )
-
-      expect(wrapper.find(DropdownItem)).toHaveLength(options)
     })
   })
 
@@ -60,7 +48,7 @@ describe('DropdownField', () => {
 
     expect(
       wrapper
-        .find(Input)
+        .find(Select)
         .dive()
         .prop('status')
     ).toBe('success')

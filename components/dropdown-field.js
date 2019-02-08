@@ -3,12 +3,12 @@
 import React, { Component, Fragment } from 'react'
 
 // Components
-import CoinEarned from '../components/wrappers/CoinEarned'
-import DropdownItem from '../components/wrappers/DropdownItem'
-import DropdownList from '../components/wrappers/DropdownList'
-import DropdownWrap from '../components/wrappers/DropdownWrap'
-import FormLineWrap from '../components/wrappers/FormLineWrap'
-import Input from '../components/wrappers/Input'
+import CoinEarned from './wrappers/CoinEarned'
+import DropdownItem from './wrappers/DropdownItem'
+import DropdownList from './wrappers/DropdownList'
+import DropdownWrap from './wrappers/DropdownWrap'
+import FormLineWrap from './wrappers/FormLineWrap'
+import Input from './wrappers/Input'
 
 import type { HandleUpdateT } from '../pages'
 
@@ -29,7 +29,7 @@ class DropdownField extends Component<DropdownFieldT> {
     this.props.handleUpdate(value || id, this.props.name)
 
   render() {
-    const { valid, value, values, ...inputProps } = this.props
+    const { name, valid, value, values, ...inputProps } = this.props
     const { handleEvent } = this
     const options = values
       .filter(option => value && option.includes(value))
@@ -38,21 +38,27 @@ class DropdownField extends Component<DropdownFieldT> {
     return (
       <Fragment>
         <FormLineWrap>
+          {valid && <CoinEarned />}
           <Input
+            name={name}
+            autoComplete="off"
             onChange={handleEvent}
             status={valid ? 'success' : null}
             type="text"
             value={value}
             {...inputProps}
           />
-          {valid && <CoinEarned />}
         </FormLineWrap>
         {options.length >= 1 && !valid && (
           <FormLineWrap>
             <DropdownWrap>
               <DropdownList>
                 {options.map(value => (
-                  <DropdownItem id={value} key={value} onClick={handleEvent}>
+                  <DropdownItem
+                    id={value}
+                    key={`${name}-${value}`}
+                    onClick={handleEvent}
+                  >
                     {value}
                   </DropdownItem>
                 ))}

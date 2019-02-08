@@ -3,6 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 // Dependencies
+import Countdown from './countdown'
 import ErrorCode from './wrappers/ErrorCode'
 
 // Tested Unit
@@ -10,6 +11,7 @@ import TestedComponent from './message'
 
 const getProps = customProps => ({
   message: 'Hello world!',
+  retry: false,
   ...customProps,
 })
 
@@ -23,6 +25,15 @@ describe('Message', () => {
   it('shows "Hello world!"', () => {
     const actual = wrapper.find(ErrorCode).text()
     const expected = 'Hello world!'
+
+    expect(actual).toEqual(expected)
+  })
+
+  it('shows Countdown', () => {
+    wrapper.setProps({ retry: true })
+
+    const actual = wrapper.find(Countdown).length
+    const expected = 1
 
     expect(actual).toEqual(expected)
   })
