@@ -15,6 +15,7 @@ import ErrorCode from './ErrorCode'
 import FormButtons from './FormButtons'
 import FormLineWrap from './FormLineWrap'
 import FormSection from './FormSection'
+import GitHubLink from './GitHubLink'
 import Input from './Input'
 import MessageBox from './MessageBox'
 import Modal from './Modal'
@@ -35,6 +36,7 @@ const wrappers = {
   FormButtons,
   FormLineWrap,
   FormSection,
+  GitHubLink,
   Input,
   MessageBox,
   Modal,
@@ -62,6 +64,7 @@ describe.each`
   ${'FormLineWrap'}  | ${null}
   ${'FormSection'}   | ${{ active: false }}
   ${'FormSection'}   | ${{ active: true }}
+  ${'GitHubLink'}    | ${null}
   ${'Input'}         | ${{ disabled: true }}
   ${'Input'}         | ${{ status: 'error' }}
   ${'Input'}         | ${{ status: 'success' }}

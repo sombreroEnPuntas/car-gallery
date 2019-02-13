@@ -1,117 +1,126 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Index matches snapshot 1`] = `
-<Form
-  isLoading={false}
-  message={null}
-  retry={true}
->
-  <Score__FormButtons>
-    Score: 000
-  </Score__FormButtons>
-  <FormSection
-    active={true}
-    id="part-1"
+<Fragment>
+  <GitHubLink
+    href="https://github.com/sombreroEnPuntas/car-gallery"
+    rel="noopener noreferrer"
+    target="_blank"
   >
-    <p>
-      Available makes:
-    </p>
-    <DropdownField
-      handleUpdate={[Function]}
-      name="make"
-      valid={false}
-      value=""
-      values={
-        Array [
-          "ford",
-          "opel",
-        ]
-      }
-    />
-    <p>
-      Available models:
-    </p>
-    <DropdownField
-      disabled={true}
-      handleUpdate={[Function]}
-      name="model"
-      placeholder="Choose make!"
-      valid={false}
-      value=""
-      values={Array []}
-    />
-  </FormSection>
-  <FormSection
-    active={false}
-    id="part-2"
+    Check the code on github!
+  </GitHubLink>
+  <Form
+    isLoading={false}
+    message={null}
+    retry={true}
   >
-    <p>
-      Available body types:
-    </p>
-    <SelectField
-      disabled={true}
-      handleUpdate={[Function]}
-      name="bodyType"
-      placeholder="Choose make!"
-      valid={false}
-      value=""
-      values={Array []}
-    />
-    <p>
-      Available fuel types:
-    </p>
-    <SelectField
-      disabled={true}
-      handleUpdate={[Function]}
-      name="fuelType"
-      placeholder="Choose make!"
-      valid={false}
-      value=""
-      values={Array []}
-    />
-  </FormSection>
-  <FormSection
-    active={false}
-    id="part-3"
-  >
-    <p>
-      Available engine capacities:
-    </p>
-    <SelectField
-      disabled={true}
-      handleUpdate={[Function]}
-      name="engineCapacity"
-      placeholder="Choose make!"
-      valid={false}
-      value=""
-      values={Array []}
-    />
-    <p>
-      Available engine power:
-    </p>
-    <SelectField
-      disabled={true}
-      handleUpdate={[Function]}
-      name="enginePowerKW"
-      placeholder="Choose make!"
-      valid={false}
-      value=""
-      values={Array []}
-    />
-  </FormSection>
-  <p>
-    Available cars: 0
-  </p>
-  <FormButtons>
-    <div />
-    <a
-      data-test-id="next"
-      onClick={[Function]}
+    <Score__FormButtons>
+      Score: 000
+    </Score__FormButtons>
+    <FormSection
+      active={true}
+      id="part-1"
     >
-      Next &gt;
-    </a>
-  </FormButtons>
-</Form>
+      <p>
+        Available makes:
+      </p>
+      <DropdownField
+        handleUpdate={[Function]}
+        name="make"
+        valid={false}
+        value=""
+        values={
+          Array [
+            "ford",
+            "opel",
+          ]
+        }
+      />
+      <p>
+        Available models:
+      </p>
+      <DropdownField
+        disabled={true}
+        handleUpdate={[Function]}
+        name="model"
+        placeholder="Choose make!"
+        valid={false}
+        value=""
+        values={Array []}
+      />
+    </FormSection>
+    <FormSection
+      active={false}
+      id="part-2"
+    >
+      <p>
+        Available body types:
+      </p>
+      <SelectField
+        disabled={true}
+        handleUpdate={[Function]}
+        name="bodyType"
+        placeholder="Choose make!"
+        valid={false}
+        value=""
+        values={Array []}
+      />
+      <p>
+        Available fuel types:
+      </p>
+      <SelectField
+        disabled={true}
+        handleUpdate={[Function]}
+        name="fuelType"
+        placeholder="Choose make!"
+        valid={false}
+        value=""
+        values={Array []}
+      />
+    </FormSection>
+    <FormSection
+      active={false}
+      id="part-3"
+    >
+      <p>
+        Available engine capacities:
+      </p>
+      <SelectField
+        disabled={true}
+        handleUpdate={[Function]}
+        name="engineCapacity"
+        placeholder="Choose make!"
+        valid={false}
+        value=""
+        values={Array []}
+      />
+      <p>
+        Available engine power:
+      </p>
+      <SelectField
+        disabled={true}
+        handleUpdate={[Function]}
+        name="enginePowerKW"
+        placeholder="Choose make!"
+        valid={false}
+        value=""
+        values={Array []}
+      />
+    </FormSection>
+    <p>
+      Available cars: 0
+    </p>
+    <FormButtons>
+      <div />
+      <a
+        data-test-id="next"
+        onClick={[Function]}
+      >
+        Next &gt;
+      </a>
+    </FormButtons>
+  </Form>
+</Fragment>
 `;
 
 exports[`Index unmounts cleanly 1`] = `""`;

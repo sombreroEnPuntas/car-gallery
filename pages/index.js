@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 // Data
 import { getMakes, getModels, getVehicles } from '../data/car-service'
@@ -15,11 +15,12 @@ import type { VehicleT } from '../data/car-service'
 
 // Components
 import DropdownField from '../components/dropdown-field'
-import SelectField from '../components/select-field'
 import Form from '../components/form'
-import FormSection from '../components/wrappers/FormSection'
 import FormButtons from '../components/wrappers/FormButtons'
+import FormSection from '../components/wrappers/FormSection'
+import GitHubLink from '../components/wrappers/GitHubLink'
 import Score from '../components/wrappers/Score'
+import SelectField from '../components/select-field'
 
 // Utils
 import { assocPath, compose, dissocPath, path, pathSatisfies } from 'ramda'
@@ -212,49 +213,58 @@ class Index extends Component<PropsT, StateT> {
     const score = getScore(this.state)
 
     return (
-      <Form isLoading={isLoading} message={error} retry={retries < 3}>
-        <Score>{`Score: ${('00' + score).slice(-3)}`}</Score>
-        <FormSection active={step === 1} id="part-1">
-          <p>{'Available makes:'}</p>
-          <DropdownField {...fieldHelper('make')} />
+      <Fragment>
+        <GitHubLink
+          href="https://github.com/sombreroEnPuntas/car-gallery"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {'Check the code on github!'}
+        </GitHubLink>
+        <Form isLoading={isLoading} message={error} retry={retries < 3}>
+          <Score>{`Score: ${('00' + score).slice(-3)}`}</Score>
+          <FormSection active={step === 1} id="part-1">
+            <p>{'Available makes:'}</p>
+            <DropdownField {...fieldHelper('make')} />
 
-          <p>{'Available models:'}</p>
-          <DropdownField {...fieldHelper('model')} />
-        </FormSection>
-        <FormSection active={step === 2} id="part-2">
-          <p>{'Available body types:'}</p>
-          <SelectField {...fieldHelper('bodyType')} />
+            <p>{'Available models:'}</p>
+            <DropdownField {...fieldHelper('model')} />
+          </FormSection>
+          <FormSection active={step === 2} id="part-2">
+            <p>{'Available body types:'}</p>
+            <SelectField {...fieldHelper('bodyType')} />
 
-          <p>{'Available fuel types:'}</p>
-          <SelectField {...fieldHelper('fuelType')} />
-        </FormSection>
-        <FormSection active={step === 3} id="part-3">
-          <p>{'Available engine capacities:'}</p>
-          <SelectField {...fieldHelper('engineCapacity')} />
+            <p>{'Available fuel types:'}</p>
+            <SelectField {...fieldHelper('fuelType')} />
+          </FormSection>
+          <FormSection active={step === 3} id="part-3">
+            <p>{'Available engine capacities:'}</p>
+            <SelectField {...fieldHelper('engineCapacity')} />
 
-          <p>{'Available engine power:'}</p>
-          <SelectField {...fieldHelper('enginePowerKW')} />
-        </FormSection>
+            <p>{'Available engine power:'}</p>
+            <SelectField {...fieldHelper('enginePowerKW')} />
+          </FormSection>
 
-        {/* // $FlowIgnore ramda.filter returns array when evaluated */}
-        <p>{`Available cars: ${carsFound.length}`}</p>
-        <FormButtons>
-          {step !== 1 ? (
-            <a data-test-id="back" onClick={this.handleStepClick('back')}>
-              {'< Back'}
-            </a>
-          ) : (
-            <div />
-          )}
-          {step !== 3 ? (
-            <a data-test-id="next" onClick={this.handleStepClick('next')}>
-              {'Next >'}
-            </a>
-          ) : (
-            <div />
-          )}
-        </FormButtons>
-      </Form>
+          {/* // $FlowIgnore ramda.filter returns array when evaluated */}
+          <p>{`Available cars: ${carsFound.length}`}</p>
+          <FormButtons>
+            {step !== 1 ? (
+              <a data-test-id="back" onClick={this.handleStepClick('back')}>
+                {'< Back'}
+              </a>
+            ) : (
+              <div />
+            )}
+            {step !== 3 ? (
+              <a data-test-id="next" onClick={this.handleStepClick('next')}>
+                {'Next >'}
+              </a>
+            ) : (
+              <div />
+            )}
+          </FormButtons>
+        </Form>
+      </Fragment>
     )
   }
 }
