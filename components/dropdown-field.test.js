@@ -3,8 +3,9 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 // Dependencies
-import CoinEarned from '../components/wrappers/CoinEarned'
+import Coin from '../components/wrappers/Coin'
 import DropdownItem from '../components/wrappers/DropdownItem'
+import Earned from '../components/wrappers/Earned'
 import Input from '../components/wrappers/Input'
 
 // Tested unit
@@ -65,6 +66,7 @@ describe('DropdownField', () => {
         .prop('status')
     ).toBe('success')
 
-    expect(wrapper.find(CoinEarned)).toHaveLength(1)
+    expect(wrapper.find(Coin)).toHaveLength(1)
+    expect(wrapper.find(Earned)).toHaveLength(1)
   })
 })

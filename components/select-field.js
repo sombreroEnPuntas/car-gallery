@@ -6,7 +6,8 @@ import React, { Component } from 'react'
 import { getCarOptionsByKey } from '../data/form-data'
 
 // Components
-import CoinEarned from './wrappers/CoinEarned'
+import Coin from './wrappers/Coin'
+import Earned from './wrappers/Earned'
 import FormLineWrap from './wrappers/FormLineWrap'
 import Select from './wrappers/Select'
 import SelectItem from './wrappers/SelectItem'
@@ -53,7 +54,11 @@ class SelectField extends Component<SelectFieldT> {
             </SelectItem>
           ))}
         </Select>
-        {valid && <CoinEarned />}
+        {valid && (
+          <Earned>
+            <Coin />
+          </Earned>
+        )}
       </FormLineWrap>
     )
   }

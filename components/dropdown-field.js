@@ -3,10 +3,11 @@
 import React, { Component, Fragment } from 'react'
 
 // Components
-import CoinEarned from './wrappers/CoinEarned'
+import Coin from './wrappers/Coin'
 import DropdownItem from './wrappers/DropdownItem'
 import DropdownList from './wrappers/DropdownList'
 import DropdownWrap from './wrappers/DropdownWrap'
+import Earned from './wrappers/Earned'
 import FormLineWrap from './wrappers/FormLineWrap'
 import Input from './wrappers/Input'
 
@@ -38,7 +39,11 @@ class DropdownField extends Component<DropdownFieldT> {
     return (
       <Fragment>
         <FormLineWrap>
-          {valid && <CoinEarned />}
+          {valid && (
+            <Earned>
+              <Coin />
+            </Earned>
+          )}
           <Input
             name={name}
             autoComplete="off"

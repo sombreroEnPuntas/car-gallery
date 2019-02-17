@@ -6,10 +6,10 @@ import 'jest-styled-components'
 import { shallow, mount } from 'enzyme'
 
 import Coin from './Coin'
-import CoinEarned from './CoinEarned'
 import DropdownItem from './DropdownItem'
 import DropdownList from './DropdownList'
 import DropdownWrap from './DropdownWrap'
+import Earned from './Earned'
 import ErrorBox from './ErrorBox'
 import ErrorCode from './ErrorCode'
 import FormButtons from './FormButtons'
@@ -27,10 +27,10 @@ import ThreeBlinking from './ThreeBlinking'
 
 const wrappers = {
   Coin,
-  CoinEarned,
   DropdownItem,
   DropdownList,
   DropdownWrap,
+  Earned,
   ErrorBox,
   ErrorCode,
   FormButtons,
@@ -54,10 +54,10 @@ const getProps = customProps => ({
 describe.each`
   displayName        | props
   ${'Coin'}          | ${null}
-  ${'CoinEarned'}    | ${null}
   ${'DropdownItem'}  | ${null}
   ${'DropdownList'}  | ${null}
   ${'DropdownWrap'}  | ${null}
+  ${'Earned'}        | ${null}
   ${'ErrorBox'}      | ${null}
   ${'ErrorCode'}     | ${null}
   ${'FormButtons'}   | ${null}

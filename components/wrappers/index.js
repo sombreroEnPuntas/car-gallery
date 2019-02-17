@@ -15,11 +15,11 @@ export const animations = {
   rotateIn: keyframes`
   0% {
     opacity: 0;
-    transform: rotateY(0) translateY(100%);
+    transform: rotateY(0) translateY(0);
   }
   100% {
     opacity: 1;
-    transform: rotateY(1800deg) translateY(0);
+    transform: rotateY(1800deg) translateY(-100%);
   }
   `,
   fadeOut: keyframes`
@@ -36,7 +36,7 @@ export const breakpoints = {
 }
 
 export const colors = {
-  coin: { main: 'gold', border: 'black', accent: 'goldenrod' },
+  coin: { main: '#ffc107', secondary: '#060606', accent: '#fff' },
   disabled: 'rgb(235, 235, 228)',
   black: {
     background: 'white',
